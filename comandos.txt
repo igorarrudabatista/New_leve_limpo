@@ -1,0 +1,4 @@
+php artisan serve
+php artisan migrate
+php artisan db:seed PermissionTableSeeder
+php artisan db:seed CreateAdminUserSeeder
