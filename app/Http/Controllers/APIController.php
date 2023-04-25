@@ -12,7 +12,7 @@ class APIController extends Controller
 
   public Function responsavel() {
 
- 
+    $titulo = 'Responsável';
     $search = request('search');
 
     $search = request('search');
@@ -29,6 +29,7 @@ class APIController extends Controller
  //   dd($data);
 return view('API.responsavel/index', ['search' => $search,
                              'data' =>$data,
+                             'titulo' =>$titulo,
                             ]);
 
       //dd($search);
@@ -37,7 +38,7 @@ return view('API.responsavel/index', ['search' => $search,
 
     public Function cep() {
 
-     
+       $titulo = 'CEP';
         $search = request('search');
         $response = Http::get('https://brasilapi.com.br/api/cep/v2/' . $search);
 
@@ -48,6 +49,7 @@ return view('API.responsavel/index', ['search' => $search,
      //   dd($data);
   return view('API.CEP/index', ['search' => $search, 
                                 'data' =>$data,
+                                'titulo' =>$titulo,
                         ]);
 
           //dd($search);
@@ -55,7 +57,7 @@ return view('API.responsavel/index', ['search' => $search,
   }
     public Function cnpj() {
 
- 
+        $titulo = 'CNPJ';
         $search = request('search');
         $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
 
@@ -66,6 +68,7 @@ return view('API.responsavel/index', ['search' => $search,
      //   dd($data);
   return view('API.CNPJ/index', ['search' => $search,
                                  'data' =>$data,
+                                 'titulo' =>$titulo,
                                 ]);
 
           //dd($search);
@@ -73,7 +76,8 @@ return view('API.responsavel/index', ['search' => $search,
   }
     public Function cpf() {
 
- 
+      $titulo = 'CPF';
+
         $search = request('search');
         $response = Http::post('https://h-apigateway.conectagov.estaleiro.serpro.gov.br/api-cpf-light/v2/consulta/cpf' . $search);
 

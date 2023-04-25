@@ -3,17 +3,41 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<div class="app-wrapper">
-	    
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-      
-      <h1 class="app-page-title">Edição de Produto:  <i> {{$produto->Nome_Produto}} </i></h1>
-            <div class="row gy-4">
-              <div class="col-12 col-lg-12">
-                <div class="app-card app-card-account shadow-sm  flex-column align-items-start">
-            <div class="app-card-header p-3 border-bottom-0">
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="app-content pt-3 p-md-3 p-lg-4">
+            <div class="container-xl">
 
+                <div class="row g-3 mb-4 align-items-center justify-content-between">
+                    <div class="col-auto">
+
+
+                    </div>
+
+                </div>
+                <!--//row-->
+
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                              <br>
+                              <div class="text-center mb-5">
+                                <img src="{{ asset('/images/cart.png') }}" height="88" class='mb-4'>
+                                <h3>PRODUTOS</h3>
+                                <h5 class="app-page-title">Edição do Produto:  <i> <b> {{$produto->Nome_Produto}}  </b></i></h5>
+                              </div>
+
+                            <div class="row gy-4">
+                                <div class="col-12 col-lg-12">
+                                    <div class="app-card app-card-account shadow-sm  flex-column align-items-start">
+                                        <div class="app-card-header p-3 border-bottom-0">
+
+
+                                      
 
          {!! Form::model($produto, ['method' => 'PATCH', 'route' => ['produtos.update', $produto->id]] ) !!} 
             <!-- {!! Form::open(array('route' => 'produtos.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!} -->
@@ -70,18 +94,7 @@
 
     <div class="col-md-6 mb-4">
     
-    <div class="upload">
-      <input type="file" title="" id="image" name="image"  class="drop-here">
-      <div class="text text-drop">  Imagem</div>
-      <div class="text text-upload">Enviando</div>
-      <svg class="progress-wrapper" width="300" height="300">
-        <circle class="progress" r="115" cx="150" cy="150"></circle>
-      </svg>
-      <svg class="check-wrapper" width="130" height="130">
-        <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
-      </svg>
-      <div class="shadow"></div>
-    </div>
+
 
 
     <br>

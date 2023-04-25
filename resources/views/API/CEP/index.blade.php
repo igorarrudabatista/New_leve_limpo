@@ -1,10 +1,29 @@
-'@extends('base.base')
+@extends('base.base')
 @section('content')
 
 
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="app-content pt-3 p-md-3 p-lg-4">
+            <div class="container-xl">
+
+                <div class="row g-3 mb-4 align-items-center justify-content-between">
+                    <div class="col-auto">
+
+
+                    </div>
+
+                </div>
+                <!--//row-->
+
+        
 <div id="auth">       
            
-            <form action="{{asset('/API/CEP')}}" method="GET" enctype="multipart/form-data">
+<form action="{{asset('/API/CEP')}}" method="GET" enctype="multipart/form-data">
 
     <div class="container">
         <div class="row">
@@ -34,7 +53,7 @@
                             <div class="clearfix">
                                 <button class="btn btn-primary float-end">Pesquisar</button>
                             </div>
-<br>
+                                <br>
                             @if ($search)
 
                                 <p><b> Cidade:  </b>   {{ $data->city }}</p> 
@@ -42,8 +61,7 @@
                                 <p><b> Bairro:</b> {{ $data->neighborhood }}</p> 
                                 <p><b> Rua:</b>      {{ $data->street }}</p> 
                                 <p><b> Serviço:</b>      {{ $data->service }}</p> 
-                                <p><b> Longitude:</b>      {{ $data->location->coordinates->longitude }}
-                                <b>    Latitude:</b>      {{ $data->location->coordinates->latitude }}</p> 
+                            
               
 
 

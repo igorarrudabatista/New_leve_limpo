@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Models\User;
 use App\Models\Contrato;
 use App\Models\Recibo;
+use App\Models\Fornecedor;
 
 
 
@@ -17,20 +18,18 @@ class PainelGerencialController extends Controller
 
 
         public function dashboard() {
-
+            
+            $titulo = 'Recibos';
             $contratos = Contrato::with('empresa_cliente')->orderBy('id','DESC')->paginate(5);  
-            $recibos        = Recibo::with('empresa_cliente')->orderBy('id','DESC')->paginate(5);
-         
-             $clientes = Empresa_Cliente::count();
-             $produto  = Produto::count();
-             $contrato = Contrato::count();
-             $recibo   = Recibo::count();
- 
-             
-
-
+            $recibos   = Recibo::with('empresa_cliente')->orderBy('id','DESC')->paginate(5);         
+            $clientes = Empresa_Cliente::count();
+            $produto  = Produto::count();
+            $contrato = Contrato::count();
+            $recibo   = Recibo::count();
+            $fornecedor   = Fornecedor::count();
         
-            return view('painel.painel-dashboard',compact('clientes', 'produto','contrato','recibo','contratos','recibos'));
+            return view('painel.painel-dashboard',compact('clientes', 'produto','contrato',
+                                                          'recibo','contratos','recibos', 'titulo', 'fornecedor'));
 
         }
 

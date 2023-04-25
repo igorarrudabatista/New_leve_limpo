@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" href="{{ asset('/base2/img/favicon.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Dash legal
+    Leve Limpo
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -69,83 +69,102 @@
           </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
+          
           <ul class="nav">
-            <li class="active ">
+
+            <li class="{{ (request()->is('painel')) ? 'active' : '' }}">  
               <a href="{{ asset('/') }}">
                 <i class="now-ui-icons design_app"></i>
                 <p>Painel </p>
               </a>
             </li>
-            <li>
+            
+            <li class="{{ (request()->is('calendar/index')) ? 'active' : '' }}">  
               <a href="{{ asset('/calendar/index') }}">
                 <i class="now-ui-icons education_atom"></i>
                 <p>Calendário</p>
               </a>
             </li>
-            <li>
+
+            <li class="{{ (request()->is('minhaempresa')) ? 'active' : '' }}">  
               <a href="{{ asset('/minhaempresa') }}">
                 <i class="now-ui-icons location_map-big"></i>
                 <p>Minha Empresa</p>
               </a>
             </li>
-            <li>
+
+            <li class="{{ (request()->is('cliente')) ? 'active' : '' }}">  
+
               <a href="{{ asset('/cliente') }}">
                 <i class="now-ui-icons ui-1_bell-53"></i>
                 <p>Cliente</p>
               </a>
             </li>
-            <li>
+
+            <li class="{{ (request()->is('fornecedor')) ? 'active' : '' }}">  
               <a href="{{ asset('/fornecedor') }}">
                 <i class="now-ui-icons users_single-02"></i>
                 <p>Fornecedor</p>
               </a>
             </li>
-            <li>
-              <a href="{{ asset('/fornecedor') }}">
-                <i class="now-ui-icons users_single-02"></i>
-                <p>Usuários</p>
-              </a>
-            </li>
-            <li>
+
+            <li class="{{ (request()->is('produtos')) ? 'active' : '' }}">  
               <a href="{{ asset('/produtos') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p>Produtos</p>
               </a>
             </li>
-            <li>
+
+            <li class="{{ (request()->is('contrato')) ? 'active' : '' }}">  
               <a href="{{ asset('/contrato') }}">
                 <i class="now-ui-icons text_caps-small"></i>
                 <p>Contrato</p>
               </a>
             </li>
-            <li>
+
+            <li class="{{ (request()->is('recibos')) ? 'active' : '' }}">  
               <a href="{{ asset('/recibos') }}">
                 <i class="now-ui-icons text_caps-small"></i>
                 <p>Recibos</p>
               </a>
             </li>
-            <li class="active-pro">
+   
+            <li class="{{ (request()->is('users')) ? 'active' : '' }}">  
+              <a href="{{ asset('/users') }}">
+                <i class="now-ui-icons users_single-02"></i>
+                <p>Usuários</p>
+              </a>
+            </li>
+
+            <li class="{{ (request()->is('roles')) ? 'active' : '' }}">  
               <a href="{{ asset('/roles') }}">
                 <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                 <p>Perfis</p>
               </a>
             </li>
-            <li class="active-pro">
+            <hr>
+            <li class="{{ (request()->is('API/CEP')) ? 'active' : '' }}">  
               <a href="{{ asset('/API/CEP') }}">
                 <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                 <p>CEP</p>
               </a>
             </li>
-            <li class="active-pro">
+            <li class="{{ (request()->is('API/CNPJ')) ? 'active' : '' }}">  
               <a href="{{ asset('/API/CNPJ') }}">
                 <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                 <p>CNPJ</p>
               </a>
             </li>
 
+<hr>
 
-
-       
+<li class="{{ (request()->is('API/CNPJ')) ? 'active' : '' }}">  
+  <a href="{{ asset('/API/CNPJ') }}">
+    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+    <p>CNPJ</p>
+  </a>
+</li>
+   
       
         
           </ul>

@@ -1,6 +1,7 @@
 @extends('base.base')
 
 @section('content')
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
@@ -13,11 +14,15 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
           <br>
+          <h1 class="app-page-title mb-0">CLIENTES</h1> <br>
+
         <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn bg-primary text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
           <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
         </svg> Adicionar Clientes</button> </a>
 
         </div>
+
+
         <div class="col-auto">
            <div class="page-utilities">
             <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
@@ -83,9 +88,9 @@
   
       
         @elseif ($message = Session::get('delete'))
-        <div class="toast-container" style="position: absolute; top: 60px; right: 60px;">
-          <div class="toast bg-danger text-white fade show">
-              <div class="toast-header bg-danger text-white">
+        <div class="toast-container" style="position: absolute; top: 60px; right: 60px;"  data-delay="500">
+          <div class="toast bg-danger text-white fade show"  data-delay="500">
+              <div class="toast-header bg-danger text-white" data-delay="500">
                   <strong class="me-auto"><i class="bi-globe"></i>Sucesso!</strong>
                   <small>{{date("h:i a")}}</small>
                   <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
@@ -98,8 +103,7 @@
         </div>
       
         @endif
-    
-        </div>
+    </div>
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title"> Lista de Clientes</h4>

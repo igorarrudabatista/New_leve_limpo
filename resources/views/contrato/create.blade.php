@@ -9,8 +9,11 @@
 
 <link id="theme-style" rel="stylesheet" href="{{asset('css/step-by-step/style.css')}}">
 
-<div class="app-wrapper">
-	    
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">	    
     <div class="app-content pt-3 p-md-3 p-lg-4">
       <div class="container-xl">
         
@@ -183,7 +186,7 @@
         image.src = dropd.value;	
       };
       </script>
-s
+
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
     <script src="{{asset('js/step-by-step/script.js')}}"></script>

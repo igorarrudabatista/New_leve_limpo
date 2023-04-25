@@ -4,8 +4,13 @@
 
 
 
-<div class="app-wrapper">
-	    
+
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">	    
   <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
       

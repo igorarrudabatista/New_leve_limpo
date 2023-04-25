@@ -60,11 +60,12 @@ class ContratoController extends Controller
     
 
     public function create() {
-
+        
+        $titulo = 'Contrato';
         $produto         = Produto::orderBy('id','asc')->get();
         $empresa_cliente = Empresa_Cliente::orderBy('id', 'asc')->get();
 
-        return view('contrato.create', compact('empresa_cliente','produto'));
+        return view('contrato.create', compact('empresa_cliente','produto', 'titulo'));
     }
     
     /**

@@ -25,7 +25,7 @@ class Recibo extends Model
     }   
     
   public function empresa_cliente() {
-      return $this->belongsTo(Empresa_cliente::class, 'empresa_cliente_id');
+      return $this->belongsTo(Empresa_Cliente::class, 'empresa_cliente_id');
       }      
 
     

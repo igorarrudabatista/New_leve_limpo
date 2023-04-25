@@ -4,21 +4,28 @@
 
 
 
-
-<div class="app-wrapper">
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
 	    
   <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
+          <br>
+
+      
               <h1 class="app-page-title mb-0">PRODUTOS</h1> <br>
 
         <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn bg-primary text-light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
           <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5ZM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6l.5.667Z"/>
         </svg> Adicionar Produto </button> </a>
-
         </div>
+
+
         <div class="col-auto">
            <div class="page-utilities">
             <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
@@ -90,9 +97,9 @@
 
     
       @elseif ($message = Session::get('delete'))
-      <div class="toast-container" style="position: absolute; top: 60px; right: 60px;">
-        <div class="toast bg-danger text-white fade show" data-delay="500">
-            <div class="toast-header bg-danger text-white">
+      <div class="toast-container" style="position: absolute; top: 60px; right: 60px;"  data-delay="500">
+        <div class="toast bg-danger text-white fade show"  data-delay="500">
+            <div class="toast-header bg-danger text-white" data-delay="500">
                 <strong class="me-auto"><i class="bi-globe"></i>Sucesso!</strong>
                 <small>{{date("h:i a")}}</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
@@ -105,12 +112,14 @@
       </div>
     
       @endif
-    <div class="tab-content" id="orders-table-tab-content">
-          <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
-          <div class="app-card app-card-orders-table shadow-sm mb-5">
-            <div class="app-card-body">
-              <div class="table-responsive">
-                  <table class="table app-table-hover mb-0 text-left">
+    </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Lista de Produtos</h4>
+        </div>
+        <div class="card-body">
+      <div class="table-responsive">
+          <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
                     <th class="cell">Id</th>
@@ -210,20 +219,7 @@
 
   
 </div><!--//app-wrapper-->    		
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-<script>
-  $(document).ready(function(){
-    
-          $("#myToast").toast("show")({
-        delay: 500
-    }); 
-
-      });
-  
-  </script>
 
 
 @endsection
