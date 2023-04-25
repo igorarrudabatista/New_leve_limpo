@@ -8,23 +8,17 @@
 <div class="content">
   <div class="row">
     <div class="col-md-12">
-        <div class="app-content pt-3 p-md-3 p-lg-4">
-            <div class="container-xl">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header">
 
-                <div class="row g-3 mb-4 align-items-center justify-content-between">
-                    <div class="col-auto">
-
-
-                    </div>
-
-                </div>
+       
                 <!--//row-->
                 <form action="{{ asset('/cliente/create') }}" method="GET" enctype="multipart/form-data">
 
                     <section id="multiple-column-form">
                         <div class="row match-height">
                             <div class="col-12">
-                                <div class="card">
 
                                     <br>
                                     <div class="text-center mb-5">
@@ -43,6 +37,8 @@
                                                             name="search" data-mask="00000000000000"
                                                             data-mask-selectonfocus="true"
                                                             placeholder="Digite o CNPJ da empresa">
+                                                            <a class="text-danger"><b>Obs.</b> Inserir o CNPJ sem pontos e traços.</a> 
+
                                                         <br>
                                                         <center><button
                                                                 class="btn btn-primary float text-light">Pesquisar</button>

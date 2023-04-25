@@ -14,20 +14,13 @@
   <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
       
-      <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
 
-
-        </div>
-
-      </div><!--//row-->
 
 <section id="multiple-column-form">
   <div class="row match-height">
       <div class="col-12">
           <div class="card">
     
-<br>
               <div class="text-center mb-5">
                   <img src="{{asset('/images/empresa.png')}}" height="160" class='mb-4'>
                   <h3>SUA EMPRESA</h3>

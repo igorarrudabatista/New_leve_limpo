@@ -81,14 +81,14 @@
             
             <li class="{{ (request()->is('calendar/index')) ? 'active' : '' }}">  
               <a href="{{ asset('/calendar/index') }}">
-                <i class="now-ui-icons education_atom"></i>
+                <i class="now-ui-icons ui-1_calendar-60 "></i>
                 <p>Calendário</p>
               </a>
             </li>
 
             <li class="{{ (request()->is('minhaempresa')) ? 'active' : '' }}">  
               <a href="{{ asset('/minhaempresa') }}">
-                <i class="now-ui-icons location_map-big"></i>
+                <i class="now-ui-icons shopping_shop"></i>
                 <p>Minha Empresa</p>
               </a>
             </li>
@@ -96,7 +96,7 @@
             <li class="{{ (request()->is('cliente')) ? 'active' : '' }}">  
 
               <a href="{{ asset('/cliente') }}">
-                <i class="now-ui-icons ui-1_bell-53"></i>
+                <i class="now-ui-icons business_badge"></i>
                 <p>Cliente</p>
               </a>
             </li>
@@ -110,21 +110,21 @@
 
             <li class="{{ (request()->is('produtos')) ? 'active' : '' }}">  
               <a href="{{ asset('/produtos') }}">
-                <i class="now-ui-icons design_bullet-list-67"></i>
+                <i class="now-ui-icons shopping_bag-16"></i>
                 <p>Produtos</p>
               </a>
             </li>
 
             <li class="{{ (request()->is('contrato')) ? 'active' : '' }}">  
               <a href="{{ asset('/contrato') }}">
-                <i class="now-ui-icons text_caps-small"></i>
+                <i class="now-ui-icons education_paper "></i>
                 <p>Contrato</p>
               </a>
             </li>
 
             <li class="{{ (request()->is('recibos')) ? 'active' : '' }}">  
               <a href="{{ asset('/recibos') }}">
-                <i class="now-ui-icons text_caps-small"></i>
+                <i class="now-ui-icons files_single-copy-04"></i>
                 <p>Recibos</p>
               </a>
             </li>
@@ -138,35 +138,24 @@
 
             <li class="{{ (request()->is('roles')) ? 'active' : '' }}">  
               <a href="{{ asset('/roles') }}">
-                <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                <i class="now-ui-icons education_agenda-bookmark "></i>
                 <p>Perfis</p>
               </a>
             </li>
             <hr>
-            <li class="{{ (request()->is('API/CEP')) ? 'active' : '' }}">  
-              <a href="{{ asset('/API/CEP') }}">
-                <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                <p>CEP</p>
-              </a>
-            </li>
-            <li class="{{ (request()->is('API/CNPJ')) ? 'active' : '' }}">  
-              <a href="{{ asset('/API/CNPJ') }}">
-                <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                <p>CNPJ</p>
-              </a>
-            </li>
+            <li class="dropdown dropright {{ (request()->is('API')) ? 'active' : '' }}">
+              <a   id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="now-ui-icons education_agenda-bookmark "></i>
 
-<hr>
-
-<li class="{{ (request()->is('API/CNPJ')) ? 'active' : '' }}">  
-  <a href="{{ asset('/API/CNPJ') }}">
-    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-    <p>CNPJ</p>
-  </a>
-</li>
-   
-      
-        
+                Serviços </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                <a class="dropdown-item" href="{{ asset('/API/CNPJ') }}">Consulta de CNPJ</a>
+                <a class="dropdown-item" href="{{ asset('/API/CEP') }}">Consulta de CEP</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ asset('/Objetos/teclado2') }}">Treine a sua Digitação</a>
+                <a class="dropdown-item" href="{{ asset('/Objetos/piano') }}">Toque Piano</a>
+              </div> 
+            </li>
           </ul>
         </div>
       </div>
@@ -217,9 +206,8 @@
                     </p>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="{{ asset('/logout') }}">Sair do sistema</a>
+                    <a class="dropdown-item" href="{{ asset('/logout') }}"> <i class="now-ui-icons sport_user-run "></i> 
+                       Sair do sistema</a>
                   </div>
                 </li>
  
@@ -244,14 +232,13 @@
     <script src="{{ asset('base2/assets/js/core/bootstrap.min.js') }} "></script>
     <script src="{{ asset('base2/js/plugins/perfect-scrollbar.jquery.min.js') }} "></script>
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="{{ asset('bas2/js/plugins/chartjs.min.js') }} "></script>
     <!--  Notifications Plugin    -->
     <script src="{{ asset('base2/js/plugins/bootstrap-notify.js') }} "></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('base2/js/now-ui-dashboard.min.js?v=1.5.0js') }}" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('base2/demo/demo.js') }}"></script>
+  <script src="{{ asset('base2/demo/demo.js') }}"></script> 
     <script>
       $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
@@ -262,6 +249,10 @@
 
 
 
+<script src="{{asset('/js/calendar/jquery.min.js')}}"></script>
+<script src="{{asset('/js/calendar/jquery-ui.min.js')}}"></script>
+<script src="{{asset('/js/calendar/moment.min.js')}}"></script>
+<script src="{{asset('/js/calendar/fullcalendar.min.js')}}"></script>
 
     {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> --}}
     <!-- Javascript -->

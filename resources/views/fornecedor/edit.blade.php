@@ -1,32 +1,22 @@
 @extends('base.base')
-
 @section('content')
-
-
-
-
 
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
   <div class="row">
-    <div class="col-md-12">	    
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-      
-      <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
+    <div class="col-md-12">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header ">
 
-
-        </div>
-
-      </div><!--//row-->
+       
+                <!--//row-->
       <form action="{{asset('/fornecedor/create')}}" method="GET" enctype="multipart/form-data">
 
 <section id="multiple-column-form">
   <div class="row match-height">
       <div class="col-12">
-          <div class="card">
     
 <br>
               <div class="text-center mb-5">

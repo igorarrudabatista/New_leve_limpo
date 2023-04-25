@@ -57,6 +57,7 @@ return view('API.responsavel/index', ['search' => $search,
   }
     public Function cnpj() {
 
+
         $titulo = 'CNPJ';
         $search = request('search');
         $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
@@ -64,14 +65,12 @@ return view('API.responsavel/index', ['search' => $search,
    //     dd($response);
 
         $data = json_decode($response); // convert JSON into objects 
+        //   dd($data);
 
-     //   dd($data);
-  return view('API.CNPJ/index', ['search' => $search,
+        return view('API.CNPJ.index', ['search' => $search,
                                  'data' =>$data,
                                  'titulo' =>$titulo,
                                 ]);
-
-          //dd($search);
 
   }
     public Function cpf() {
@@ -86,7 +85,7 @@ return view('API.responsavel/index', ['search' => $search,
         $data = json_decode($response); // convert JSON into objects 
 
       //  dd($data);
-  return view('API.CPF/index', ['search' => $search,
+  return view('API.CPF.index', ['search' => $search,
                                  'data' =>$data,
                                 ]);
 

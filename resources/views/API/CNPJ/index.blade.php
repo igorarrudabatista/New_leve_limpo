@@ -3,22 +3,18 @@
 
 
 
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
   <div class="row">
-    <div class="col-md-12">	    
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-      
-      <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
+    <div class="col-md-12">
+        <div class="col-md-6 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header">
 
-
-        </div>
-
-      </div><!--//row-->
-
+       
+                <!--//row-->
 
       
 <div id="auth">       
@@ -27,8 +23,6 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-sm-12 mx-auto">
-                <div class="card py-4">
                     <div class="card-body">
                         <div class="text-center mb-5">
                             <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
@@ -42,7 +36,9 @@
     
                             <div class="form-group">
                                 <label for="first-name-column">CNPJ</label>
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CNPJ aqui">
+                                <input type="text" id="search" class="form-control" name="search"  data-mask="00000000000000" data-mask-selectonfocus="true"  placeholder="Digite o CNPJ aqui">
+                                <a class="text-danger"><b>Obs.</b> Inserir o CNPJ sem pontos e traços.</a> 
+
                             </div>
     
                                {{--  <div class="form-group">

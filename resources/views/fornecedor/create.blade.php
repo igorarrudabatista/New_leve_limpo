@@ -1,32 +1,23 @@
 @extends('base.base')
-
 @section('content')
-
-
-
-
 
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
   <div class="row">
-    <div class="col-md-12">	    
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-      
-      <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
+    <div class="col-md-12">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header">
 
+       
+                <!--//row-->
 
-        </div>
-
-      </div><!--//row-->
       <form action="{{asset('/fornecedor/create')}}" method="GET" enctype="multipart/form-data">
 
 <section id="multiple-column-form">
   <div class="row match-height">
       <div class="col-12">
-          <div class="card">
     
 <br>
               <div class="text-center mb-5">
@@ -40,13 +31,15 @@
             <div class="app-card-header p-3 border-bottom-0">
               
             <center>    <div class="col-md-4">
-                  <input type="text" id="Cnpj" class="form-control inpt " name="search" data-mask="00000000000000" data-mask-selectonfocus="true" placeholder="Digite o CNPJ da empresa" >
+                  <input type="text" id="Cnpj" class="form-control inpt ls-mask-cnpj" placeholder="Digite o CNPJ" name="search" data-mask="00000000000000" data-mask-selectonfocus="true"  >
+                  <a class="text-danger"><b>Obs.</b> Inserir o CNPJ sem pontos e traços.</a> 
+
                   <br> 
                   <center><button class="btn btn-primary float text-light">Pesquisar</button>
                     <br> <br>
                 </div>
-                
-              @if ($search)
+                @if ($search)
+
 
             </form>
               {!! Form::open(array('route' => 'fornecedor.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
@@ -55,7 +48,10 @@
      <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> CNPJ</strong></label>
     {!! Form::text('Cnpj', $data->cnpj, array('class' => 'form-control')) !!}
-  </div> 
+  
+  
+
+                </div> 
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome Fantasia</strong></label>
     {!! Form::text('Nome_fantasia', $data->nome_fantasia, array('class' => 'form-control')) !!}
@@ -127,3 +123,9 @@
 @endif
 
 @endsection
+
+<script>
+  $(document).ready(function() {
+    $('.Cnpj').mask('00.000.000/0000-00', {reverse: true});
+  });                                           
+</script>

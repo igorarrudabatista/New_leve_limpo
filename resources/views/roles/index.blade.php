@@ -2,15 +2,19 @@
 @section('content')
 
 
+
+
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
   <div class="row">
     <div class="col-md-12">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header">
 
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-      
+       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
           <br>
@@ -98,10 +102,9 @@
       
         @endif
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title"> Lista de Perfis</h4>
-        </div>
+     
+      <div class="container">
+        <div class="row">
         <div class="card-body">
       <div class="table-responsive">
           <table class="table app-table-hover mb-0 text-left">

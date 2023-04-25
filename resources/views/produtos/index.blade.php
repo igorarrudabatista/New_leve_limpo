@@ -9,15 +9,15 @@
 <div class="content">
   <div class="row">
     <div class="col-md-12">
-	    
-  <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header">
+
+       
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
           <br>
-
-      
               <h1 class="app-page-title mb-0">PRODUTOS</h1> <br>
 
         <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn bg-primary text-light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
@@ -113,14 +113,13 @@
     
       @endif
     </div>
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title"> Lista de Produtos</h4>
-        </div>
-        <div class="card-body">
-      <div class="table-responsive">
-          <table class="table app-table-hover mb-0 text-left">
-                <thead>
+
+    <div class="container">
+      <div class="row">
+      <div class="card-body">
+    <div class="table-responsive">
+        <table class="table app-table-hover mb-0 text-left">
+              <thead>
                   <tr>
                     <th class="cell">Id</th>
                     <th class="cell">Nome</th>
