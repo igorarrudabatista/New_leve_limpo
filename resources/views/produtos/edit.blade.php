@@ -55,9 +55,9 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend2">R$</span>
         </div>
-        <input type="text" class="form-control" id="Preco_Produto" data-mask="###.##0"
-        data-mask-selectonfocus="true"
-            name="Preco_Produto">
+        {!! Form::number('Preco_Produto', null, array('class' => 'form-control')) !!}
+
+      
       </div>
     </div>
   </div>

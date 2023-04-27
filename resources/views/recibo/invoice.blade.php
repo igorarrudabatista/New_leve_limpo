@@ -48,26 +48,54 @@
         <tr>
           <th>Nome do Produto</th>
           <th>Quantidade</th>
+          <th>Preço Unid.</th>
+          <th>Total</th>
           {{-- <th>Preço</th> --}}
           
         </tr>
       </thead>
+      <?php $total2 = 0 ;?>
 
       <tbody>
         <tr>
             @foreach($recibo->produto as $item)
             
           </td>
-          <td>{{$item->Nome_Produto}}</td>
-          <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
-          {{-- <td class="text-right">R$ {{$preco= $item['Preco_Produto']}}</td> --}}
-   
+              <td>{{$item->Nome_Produto}}</td>
+              <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
+              <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td>
+              <td> {{"R$ " . number_format($total1 = $preco * (int)$quantidade, 0, ",", ".")  }} <?php $total2 += $total1; ?> </td>
+      
         </tr>
         @endforeach
 
       </tbody>
     </table>
     <div class="row">
+
+      <div class="offset-6 col-6 mb-3 pr-4 sub-table">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row gray-ish">Subtotal</th>
+              <td class="text-right">R$ {{$total2}} </td>
+            </tr>
+         
+            <tr>
+              <th scope="row gray-ish">Taxas*</th>
+              <td class="text-right">R$ {{$taxa = $recibo->Taxas }} </td>
+            </tr>
+            <tr>
+              <th scope="row gray-ish">Desconto</th>
+              <td class="text-right">R$ {{$desconto = $recibo->Desconto}} </td>
+            </tr>
+            <tr class="last-row">
+                <th scope="row"><h4>Total</h4></th>
+                <td class="text-right"><h4>{{"R$ " . number_format($total = $total2 + $taxa - $desconto, 0, ",", ".")  }}</h4></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="col-8">
       </div>
       <div class="col-6">

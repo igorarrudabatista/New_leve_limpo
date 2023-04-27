@@ -138,11 +138,49 @@
                 
                         <div v-show="currentstep == 3">
                             <h3>Passo 3</h3>
-                            <div class="form-group">
-                                <label for="textarea">Observações:</label>
-                                <input class="form-control" name="Observacoes" rows="4" value="Custo de R$ 24,00 por toalha manchada, rasgada ou extraviada."> </textarea>
-                            </div>
                             <br>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-md-5 col-12">
+                                   
+                                        <label for="first-name-column"><strong> Observações: </strong></label>
+                                        <input class="form-control" name="Observacoes" rows="4" value="Custo de R$ 24,00 por toalha manchada, rasgada ou extraviada."> </textarea>
+
+
+
+                                        {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
+
+                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
+                                   </div>
+
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="email-id-column"><strong> Taxa:</strong></label>
+                                        <div class="position-relative">
+
+                                      {!! Form::number('DataEntrega', null, array('placeholder' => 'Informe o valor em R$ da Taxa caso houver','class' => 'form-control')) !!} 
+
+                                         
+                                            
+                                    </div>
+                                </div>
+
+                                </div>
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="email-id-column"> <strong> Desconto: </strong></label>
+                                        <div class="position-relative">
+
+                                       {!! Form::number('DataRetirada', null, array('placeholder' => 'Informe o valor em R$ do Desconto caso houver','class' => 'form-control')) !!} 
+
+                                            
+                                    </div>
+                                </div>
+
+                            </div>          
+
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="textarea">Mensagem para o Cliente:</label>
                                 <input class="form-control" name="MensagemCliente" rows="4" value="Leve Limpo agradece a preferência."> </textarea>
@@ -187,15 +225,6 @@
                 </div>
 
                 </form>
-
-
-                            
-
-
-                                        {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
-
-                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
-
                              
                             {!! Form::close() !!}
                             

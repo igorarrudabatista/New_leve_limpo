@@ -57,7 +57,7 @@
                                                                 <span class="input-group-text"
                                                                     id="inputGroupPrepend2">R$</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="Preco_Produto" data-mask="###.##0"
+                                                            <input type="text" class="form-control" id="Preco_Produto" data-mask="000000"
                                                             data-mask-selectonfocus="true"
                                                                 name="Preco_Produto">
                                                         </div>

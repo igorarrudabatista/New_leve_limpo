@@ -21,7 +21,8 @@ return new class extends Migration
         $table->json('DescProdutos')->nullable();
         $table->string('DataEntrega')->nullable();
         $table->string('DataRetirada')->nullable();
-        $table->string('Descrição')->nullable();
+        $table->decimal('Taxa')->nullable();
+        $table->decimal('Desconto')->nullable();
         $table->string('MensagemCliente')->nullable();
         $table->string('Observacoes')->nullable();
 
