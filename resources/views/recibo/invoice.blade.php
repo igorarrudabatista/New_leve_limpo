@@ -83,7 +83,7 @@
          
             <tr>
               <th scope="row gray-ish">Taxas*</th>
-              <td class="text-right">R$ {{$taxa = $recibo->Taxas }} </td>
+              <td class="text-right">R$ {{$taxa = $recibo->Taxa }} </td>
             </tr>
             <tr>
               <th scope="row gray-ish">Desconto</th>

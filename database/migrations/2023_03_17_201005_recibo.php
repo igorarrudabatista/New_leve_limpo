@@ -18,7 +18,6 @@ return new class extends Migration
         $table->increments('id');
         $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
       //  $table->foreignId('produtos_id')->constrained('produtos')->onDelete('cascade');
-        $table->json('DescProdutos')->nullable();
         $table->string('DataEntrega')->nullable();
         $table->string('DataRetirada')->nullable();
         $table->decimal('Taxa')->nullable();

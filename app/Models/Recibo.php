@@ -13,8 +13,8 @@ class Recibo extends Model
         'DescProdutos' => 'array'
     ];
     protected $fillable = [
-        'empresa_cliente_id', 'DescProdutos', 'DataEntrega', 'DataRetirada', 'Descrição', 'MensagemCliente',
-        'Observacoes'
+        'empresa_cliente_id', 'DataEntrega', 'DataRetirada', 'Descrição', 'MensagemCliente',
+        'Observacoes', 'Taxa', 'Desconto'
     ];
     protected $table = 'Recibo';
     public $timestamps = false;

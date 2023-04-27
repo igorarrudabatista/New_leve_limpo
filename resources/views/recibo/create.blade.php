@@ -143,22 +143,17 @@
                               <div class="row">
                                 <div class="col-md-5 col-12">
                                    
-                                        <label for="first-name-column"><strong> Observações: </strong></label>
-                                        <input class="form-control" name="Observacoes" rows="4" value="Custo de R$ 24,00 por toalha manchada, rasgada ou extraviada."> </textarea>
+                                  <label for="first-name-column"><strong> Observações: </strong></label>
+                                  <input class="form-control" name="Observacoes" rows="4" value="Custo de R$ 24,00 por toalha manchada, rasgada ou extraviada."> 
 
-
-
-                                        {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
-
-                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
-                                   </div>
+                                </div>
 
                                 <div class="col-md-3 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column"><strong> Taxa:</strong></label>
                                         <div class="position-relative">
 
-                                      {!! Form::number('DataEntrega', null, array('placeholder' => 'Informe o valor em R$ da Taxa caso houver','class' => 'form-control')) !!} 
+                                          {!! Form::number('Taxa', null, array('placeholder' => 'Informe o valor caso houver','class' => 'form-control')) !!} 
 
                                          
                                             
@@ -171,7 +166,7 @@
                                         <label for="email-id-column"> <strong> Desconto: </strong></label>
                                         <div class="position-relative">
 
-                                       {!! Form::number('DataRetirada', null, array('placeholder' => 'Informe o valor em R$ do Desconto caso houver','class' => 'form-control')) !!} 
+                                       {!! Form::number('Desconto', null, array('placeholder' => 'Informe o valor caso houver','class' => 'form-control')) !!} 
 
                                             
                                     </div>

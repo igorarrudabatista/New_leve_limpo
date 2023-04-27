@@ -124,6 +124,6 @@
 
                                                 <script>
                                                   $(document).ready(function() {
-                                                    $('.Preco_Produto').mask('###.##0.00', {reverse: true});
+                                                    $('.Preco_Produto').mask('##.#.##0.00', {reverse: true});
                                                   });                                           
                                                 </script>
