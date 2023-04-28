@@ -65,7 +65,7 @@ new Vue({
             {
                 id: 1,
                 title: "Empresa",
-                icon_class: "fa fa-user-circle-o"
+                icon_class: "fa fa-building"
             },
             {
                 id: 2,

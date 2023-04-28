@@ -153,7 +153,8 @@
                     @if ($produtos->Preco_Produto == '')
                        <span class="badge bg-danger"> Valor não lançado </span>
                     @elseif  ($produtos->Preco_Produto != '')
-                            <span class="badge bg-success"> R${{ number_format($produtos->Preco_Produto,  2, '.', ',') }} </span>
+                    <big>   <span class="badge bg-success"> {{"R$ " . number_format($produtos->Preco_Produto, 2, ",", ".")  }} </span> </big>
+
                     @endif
 
 

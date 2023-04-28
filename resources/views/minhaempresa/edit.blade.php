@@ -50,6 +50,10 @@
     <label for="validationDefault02"> <strong> Telefone</strong></label>
     {!! Form::text('Telefone', null, array('class' => 'form-control')) !!}
   </div>
+  <div class="col-md-4 mb-3">
+    <label for="validationDefault02"> <strong> Chave Pix</strong></label>
+    {!! Form::text('Chave_Pix', null, array('class' => 'form-control')) !!}
+  </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> E-mail</strong></label>
     {!! Form::text('Email', null, array('class' => 'form-control')) !!}

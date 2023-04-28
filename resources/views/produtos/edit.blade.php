@@ -50,16 +50,20 @@
 
     </div>
     <div class="col-md-2 mb-3">
-      <label for="validationDefaultUsername"> <strong> Preço do Produto  </strong></label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend2">R$</span>
-        </div>
-        {!! Form::number('Preco_Produto', null, array('class' => 'form-control')) !!}
+      <label for="validationDefaultUsername"> <strong> Preço</strong></label>
 
-      
+      <div class="input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"
+                  id="inputGroupPrepend2">R$</span>
+                </div>
+                  <input type="text" class="form-control" id="Preco_Produto" 
+                  data-mask-selectonfocus="true"
+              name="Preco_Produto">
       </div>
-    </div>
+      <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declarar o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
+  </div>
+  
   </div>
   <div class="row">
     <div class="col-md-3 mb-3">

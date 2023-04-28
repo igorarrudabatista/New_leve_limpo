@@ -1,6 +1,7 @@
 @extends('base.base')
-
 @section('content')
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 
 <div class="panel-header panel-header-sm">
@@ -49,20 +50,24 @@
                                                         <input type="text" class="form-control" id="Categoria_Produto"
                                                             name="Categoria_Produto">
                                                     </div>
+
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationDefaultUsername"> <strong> Preço
-                                                            </strong></label>
+                                                        <label for="validationDefaultUsername"> <strong> Preço</strong></label>
+
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"
                                                                     id="inputGroupPrepend2">R$</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="Preco_Produto" data-thousands="." data-decimal="," data-prefix="R$" data-mask="#.##0,00"
+                                                            <input type="text" class="form-control" id="Preco_Produto" 
                                                             data-mask-selectonfocus="true"
                                                                 name="Preco_Produto">
                                                         </div>
+                                                        <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declarar o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
                                                     </div>
                                                 </div>
+
+                                                
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationDefault03"> <strong> Quantidade em estoque </strong>
@@ -121,10 +126,11 @@
                                                         class="btn btn-primary me-1 mb-1 text-light">Salvar produto</button>
                                                     </form>
                                                 @endsection
-                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-                                                
-                                                <script>
-                                             $("#meuDinheiro").maskMoney();
-                                         
-                                                </script>
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+                        <script> src= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+  $('[data-toggle="popover"]').popover()
+}) </script>

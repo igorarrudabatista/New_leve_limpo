@@ -148,34 +148,39 @@
 
                                 </div>
 
-                                <div class="col-md-3 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="email-id-column"><strong> Taxa:</strong></label>
-                                        <div class="position-relative">
+                                <div class="col-md-2 col-12">
+                                  <label for="validationDefaultUsername"> <strong> Preço</strong></label>
 
-                                          {!! Form::number('Taxa', null, array('placeholder' => 'Informe o valor caso houver','class' => 'form-control')) !!} 
-
-                                         
-                                            
-                                    </div>
+                                  <div class="input-group">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"
+                                              id="inputGroupPrepend2">R$</span>
+                                      </div>
+                                      <input type="text" class="form-control" id="Taxa" 
+                                      data-mask-selectonfocus="true"
+                                          name="Taxa">
+                                  </div>
                                 </div>
 
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="email-id-column"> <strong> Desconto: </strong></label>
-                                        <div class="position-relative">
-
-                                       {!! Form::number('Desconto', null, array('placeholder' => 'Informe o valor caso houver','class' => 'form-control')) !!} 
-
-                                            
-                                    </div>
-                                </div>
-
-                            </div>          
+                                
+                                    <div class="col-md-2 col-12">
+                                      <label for="validationDefaultUsername"> <strong> Desconto</strong></label>
+    
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"
+                                                  id="inputGroupPrepend2">R$</span>
+                                          </div>
+                                          <input type="text" class="form-control" id="Desconto" 
+                                          data-mask-selectonfocus="true"
+                                              name="Desconto">                                              
+                                              <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declarar o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
+                                      </div>
+                                        </div>       
 
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="textarea">Mensagem para o Cliente:</label>
                                 <input class="form-control" name="MensagemCliente" rows="4" value="Leve Limpo agradece a preferência."> </textarea>

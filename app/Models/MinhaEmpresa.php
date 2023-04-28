@@ -11,7 +11,7 @@ class MinhaEmpresa extends Model
     protected $table = 'empresas';
 
     protected $fillable = [
-        'Nome_Empresa', 'Cnpj', 'Email', 'Telefone', 'Site', 'image', 'facebook_url', 'instagram_url', 'linkedin_url'
+        'Nome_Empresa', 'Cnpj', 'Chave_Pix', 'Email', 'Telefone', 'Site', 'image', 'facebook_url', 'instagram_url', 'linkedin_url'
     ];
 
 
