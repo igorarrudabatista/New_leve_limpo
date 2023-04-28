@@ -57,7 +57,7 @@
                                                                 <span class="input-group-text"
                                                                     id="inputGroupPrepend2">R$</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="Preco_Produto" data-mask="000000"
+                                                            <input type="text" class="form-control" id="Preco_Produto" data-thousands="." data-decimal="," data-prefix="R$" data-mask="#.##0,00"
                                                             data-mask-selectonfocus="true"
                                                                 name="Preco_Produto">
                                                         </div>
@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3">
-                                                        <label for="validationDefault03"> <strong> Quantidade </strong>
+                                                        <label for="validationDefault03"> <strong> Quantidade em estoque </strong>
                                                         </label>
                                                         <input type="text" class="form-control" id="Quantidade_Produto"
                                                             name="Quantidade_Produto">
@@ -121,9 +121,10 @@
                                                         class="btn btn-primary me-1 mb-1 text-light">Salvar produto</button>
                                                     </form>
                                                 @endsection
-
+                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+                                                
                                                 <script>
-                                                  $(document).ready(function() {
-                                                    $('.Preco_Produto').mask('##.#.##0.00', {reverse: true});
-                                                  });                                           
+                                             $("#meuDinheiro").maskMoney();
+                                         
                                                 </script>

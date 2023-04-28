@@ -63,8 +63,10 @@
           </td>
               <td>{{$item->Nome_Produto}}</td>
               <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
-              <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td>
-              <td> {{"R$ " . number_format($total1 = $preco * (int)$quantidade, 0, ",", ".")  }} <?php $total2 += $total1; ?> </td>
+              {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
+              <td> {{"R$ " . number_format($preco= $item['Preco_Produto'], 2, ",", ".")  }} </td>
+              
+              <td> {{"R$ " . number_format($total1 = $preco * (int)$quantidade, 2, ",", ".")  }} <?php $total2 += $total1; ?> </td>
       
         </tr>
         @endforeach
@@ -78,20 +80,26 @@
           <tbody>
             <tr>
               <th scope="row gray-ish">Subtotal</th>
-              <td class="text-right">R$ {{$total2}} </td>
+              <td class="text-right"> {{"R$ " . number_format($total2, 2, ",", ".")  }} </td>
+
+
+              {{-- <td class="text-right">R$ {{$total2}} </td> --}}
             </tr>
          
             <tr>
               <th scope="row gray-ish">Taxas*</th>
-              <td class="text-right">R$ {{$taxa = $recibo->Taxa }} </td>
+              <td class="text-right">{{"R$ " . number_format($taxa = $recibo->Taxa, 2, ",", ".")  }} </td>
+              {{-- <td class="text-right">R$ {{$taxa = $recibo->Taxa }} </td> --}}
             </tr>
             <tr>
               <th scope="row gray-ish">Desconto</th>
-              <td class="text-right">R$ {{$desconto = $recibo->Desconto}} </td>
+              <td class="text-right">{{"R$ " . number_format($desconto = $recibo->Desconto, 2, ",", ".") }} </td>
+
+              {{-- <td class="text-right">R$ {{$desconto = $recibo->Desconto }} </td> --}}
             </tr>
             <tr class="last-row">
                 <th scope="row"><h4>Total</h4></th>
-                <td class="text-right"><h4>{{"R$ " . number_format($total = $total2 + $taxa - $desconto, 0, ",", ".")  }}</h4></td>
+                <td class="text-right"><h4>{{"R$ " . number_format($total = $total2 + $taxa - $desconto, 2, ",", ".")  }}</h4></td>
             </tr>
           </tbody>
         </table>
@@ -117,10 +125,12 @@
     </div>
     <hr><br>
     <h6> <strong> <center><i>"{{$recibo->MensagemCliente}}" </strong>  </i> </center> </h6>
+    <br>
+    <strong> Nossa Chave Pix:</strong> <i> {{$recibo->empresa_cliente->Chave_Pix ?? 'Sem registros'  }} </i><br>
     
 
-    
-    <p class="bottom-page text-right">
+    <br>
+    <p class="bottom-page text-center">
      Leve Limpo<br>
      Rua Tenente Eulálio Guerra, 722 – Bairro Araés<br>
      Cuiabá – MT<br>
