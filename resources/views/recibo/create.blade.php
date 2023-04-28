@@ -109,7 +109,9 @@
                                         <option value="">-- Selecione o produto --</option>
                                          @foreach ($produto as $produtos)
                                         <option value="{{$produtos->id}}" data-img_ssrc="{{asset('/img/produtos/')}}/{{$produtos->image}}">  
-                                           {{$produtos->Nome_Produto}}
+                                       <b>    {{$produtos->Nome_Produto}} | {{"R$ " . number_format($produtos->Preco_Produto, 2, ",", ".")  }} </b>
+
+
                                           @endforeach 
                                         </option>
                                         
@@ -149,7 +151,10 @@
                                 </div>
 
                                 <div class="col-md-2 col-12">
-                                  <label for="validationDefaultUsername"> <strong> Preço</strong></label>
+                                  <label for="validationDefaultUsername" data-toggle="tooltip" data-placement="top" title="Taxa de Entrega ou outro valor que desejar utilizar.">
+                                    <strong> Taxa: </strong> 
+                                    <i class="now-ui-icons business_bulb-63"> </i>
+                                  </label>
 
                                   <div class="input-group">
                                       <div class="input-group-prepend">
@@ -160,12 +165,14 @@
                                       data-mask-selectonfocus="true"
                                           name="Taxa">
                                   </div>
-                                </div>
 
-                                
+                                </div>
                                     <div class="col-md-2 col-12">
-                                      <label for="validationDefaultUsername"> <strong> Desconto</strong></label>
-    
+                                      <label for="validationDefaultUsername" data-toggle="tooltip" data-placement="top" title="Caso houver preencha o valor do desconto">
+                                        <strong> Desconto: </strong> 
+                                        <i class="now-ui-icons business_bulb-63"> </i>
+                                      </label>
+
                                       <div class="input-group">
                                           <div class="input-group-prepend">
                                               <span class="input-group-text"
@@ -174,15 +181,16 @@
                                           <input type="text" class="form-control" id="Desconto" 
                                           data-mask-selectonfocus="true"
                                               name="Desconto">                                              
-                                              <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declarar o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
+                                              <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declara o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
                                       </div>
+
                                         </div>       
 
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="textarea">Mensagem para o Cliente:</label>
+                                <label for="textarea"> <b> Mensagem para o Cliente: </b></label>
                                 <input class="form-control" name="MensagemCliente" rows="4" value="Leve Limpo agradece a preferência."> </textarea>
                             </div>
                   
@@ -249,6 +257,10 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
     <script src="{{asset('js/step-by-step/script.js')}}"></script>
 
-
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+}) 
+</script>
 </section>
 @endsection

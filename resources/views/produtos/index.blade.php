@@ -122,6 +122,7 @@
               <thead>
                   <tr>
                     <th class="cell">Id</th>
+                     <th class="cell">Status</th> 
                     <th class="cell">Nome</th>
                     <th class="cell">Categoria</th>
                     <th class="cell">Quantidade</th>
@@ -137,8 +138,34 @@
                   <tr>
               
                     <td class="cell">{{$produtos->id}}</td>
-                    <td class="cell"><span class="truncate">{{$produtos->Nome_Produto}}</span></td>
-                    <td class="cell">{{$produtos->Categoria_Produto}}</td>
+
+
+                    <td class="cell">
+                      @switch($produtos)
+                          @case($produtos->Status_Produto == NULL)
+                          <span class="badge bg-warning">Não informado</span>
+                              @break
+                          @case($produtos->Status_Produto == 1)
+                          <span class="badge bg-success"> ATIVO </span>                                                     
+                              @break
+                          @case($produtos->Status_Produto == 0)
+                          <span class="badge bg-danger"> INATIVO </span>       
+                      @endswitch                   
+                    </td>
+
+
+
+                    <td class="cell"> <b> {{$produtos->Nome_Produto}} </b></td>
+                    <td class="cell"><i>{{$produtos->Categoria_Produto}} </i></td>
+
+
+
+        
+  
+
+
+
+
 
 
                     <td class="cell">
@@ -147,6 +174,7 @@
                     @elseif  ($produtos->Preco_Produto !== '')
                            <big> <span class="badge bg-info"> {{$produtos->Quantidade_Produto }}</span> </big>
                     @endif
+                    </td>
                     
                     <td class="cell" >
                     
@@ -156,7 +184,7 @@
                     <big>   <span class="badge bg-success"> {{"R$ " . number_format($produtos->Preco_Produto, 2, ",", ".")  }} </span> </big>
 
                     @endif
-
+                    </td>
 
 
                     <td class="cell">
