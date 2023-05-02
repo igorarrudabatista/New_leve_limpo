@@ -121,10 +121,10 @@
         <table class="table app-table-hover mb-0 text-left">
               <thead>
                   <tr>
-                    <th class="cell">Id</th>
-                     <th class="cell">Status</th> 
+                    <th class="cell">Status</th> 
                     <th class="cell">Nome</th>
                     <th class="cell">Categoria</th>
+                    <th class="cell">Em estoque?</th>
                     <th class="cell">Quantidade</th>
                     <th class="cell">Preço</th>
                     <th class="cell">Ações</th>
@@ -137,7 +137,6 @@
                 <tbody>
                   <tr>
               
-                    <td class="cell">{{$produtos->id}}</td>
 
 
                     <td class="cell">
@@ -146,12 +145,15 @@
                           <span class="badge bg-warning">Não informado</span>
                               @break
                           @case($produtos->Status_Produto == 1)
-                          <span class="badge bg-success"> ATIVO </span>                                                     
+                          <span class="badge bg-success"><i class="now-ui-icons ui-1_check"></i>
+ ATIVO </span>                                                     
                               @break
                           @case($produtos->Status_Produto == 0)
-                          <span class="badge bg-danger"> INATIVO </span>       
+                          <span class="badge bg-danger"><i class="now-ui-icons ui-1_simple-remove"></i>  INATIVO </span>       
                       @endswitch                   
                     </td>
+
+
 
 
 
@@ -159,7 +161,22 @@
                     <td class="cell"><i>{{$produtos->Categoria_Produto}} </i></td>
 
 
+                    <td class="cell">
+                      @switch($produtos)
+                          @case($produtos->Estoque_Produto == NULL)
+                          <span class="badge bg-warning">Não informado</span>
+                              @break
+                          @case($produtos->Estoque_Produto == 'Sim')
+                          <span class="badge bg-success"><i class="now-ui-icons ui-1_check"></i>
+ Em Estoque </span>                                                     
+                              @break
+                          @case($produtos->Estoque_Produto == 'Não')
+                          <span class="badge bg-danger"><i class="now-ui-icons ui-1_simple-remove"></i>  Fora de Estoque </span>       
+                      @endswitch                   
+                        
+                       
 
+                    </td>
         
   
 
@@ -186,46 +203,53 @@
                     @endif
                     </td>
 
+                      <!-- Butão de deletar -->
+                      <td>     
+                        <a class="btn btn-warning" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a>
+                       
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $produtos->id }}" data-id="{{ $produtos->id }}">
+                          <i class="now-ui-icons ui-1_simple-remove"></i>  Deletar
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{ $produtos->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> Você tem certeza que deseja deletar ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                              <b> ID: </b> <big> {{ $produtos->id }} </big> <br> 
+                              <b> Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
+                        
+                              </div>
+                              <div class="modal-footer">
+                        
+                                {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
 
-                    <td class="cell">
-                      <td> <a class="btn btn-warning" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a>
-
-                        {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
-
-                        {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
-
-                        {!! Form::close() !!}
-                            {{-- <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-subtract" viewBox="0 0 16 16">
-                                <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"/>
-                              </svg>
-                            </div><!--//dropdown-toggle-->
-                            <ul class="dropdown-menu">
-                               
-                                <li><a class="dropdown-item" href="{{ route('produtos.edit',$produtos->id) }}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-    </svg>Editar</a></li>
-                                
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item">
-                                  {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id]]) !!}
-                                  {!! Form::image('images/trash3.svg'), ' Deletar' !!} 
-                                  {!! Form::close() !!} 
-                                </li>
-                              </ul> --}}
-                        </div><!--//dropdown-->
-                    </div><!--//app-card-actions-->
-                      {{-- <a class="btn btn-warning text-light" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a> --}}
-                 
+                                {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+        
+                                {!! Form::close() !!}
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                                                   {{-- <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>  --}}
+                                                                   
+                                                 
+                         </td>
 
 
 
+              
+                                 
+                        
 
-                    </td>
-                     
-
-     </form>
-  </td>
+                  </form>
                   </tr>
               
                   
@@ -247,6 +271,7 @@
 
   
 </div><!--//app-wrapper-->    		
+
 
 
 

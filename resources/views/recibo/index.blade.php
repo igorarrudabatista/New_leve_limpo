@@ -162,13 +162,43 @@
                             </button> </a>
                            </td>
                           
-                            <td> <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>
-                                           
-                           {!! Form::open(['method' => 'DELETE','route' => ['recibos.destroy', $recibos->id],'style'=>'display:inline']) !!}
-                         
-                           {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+                           <!-- Butão de deletar -->
+                              <td>    
+<a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>                        
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $recibos->id }}">
+  <i class="now-ui-icons ui-1_simple-remove"></i>  Deletar
+</button>
 
-                           {!! Form::close() !!}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{ $recibos->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Você tem certeza que deseja deletar ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <b> ID: </b> <big> {{ $recibos->id }} </big> <br> 
+      <b> Empresa: </b> <big> {{$recibos->empresa_cliente->Nome_fantasia ?? 'Sem registros'  }} </big> <br> 
+
+      </div>
+      <div class="modal-footer">
+
+        {!! Form::open(['method' => 'DELETE','route' => ['recibos.destroy', $recibos->id],'style'=>'display:inline']) !!}
+                         
+        {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+
+        {!! Form::close() !!}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+                   
+                                           
+                         
  </td>
 
 

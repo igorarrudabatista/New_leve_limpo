@@ -28,6 +28,13 @@ class Recibo extends Model
       return $this->belongsTo(Empresa_Cliente::class, 'empresa_cliente_id');
       }      
 
+
+      public function produto_recibo() {
+
+        return $this->belongsToMany(Recibo_Produto::class);
+
+      }
+
     
 
 }

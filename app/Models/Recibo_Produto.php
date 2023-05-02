@@ -11,6 +11,9 @@ class Recibo_Produto extends Model
 
     protected $guarded = [];
 
+    protected $table = 'produto_recibo';
+
+
 
     public function recibo(){
         return $this->belongsTo(Recibo::class);
