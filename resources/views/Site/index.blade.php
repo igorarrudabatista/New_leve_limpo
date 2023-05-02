@@ -1,30 +1,28 @@
 
 @extends('base.base2')
-
 @section('content')
 
 
 <section class="app-main">
   <div class="app-main-left cards-area">
-
     @foreach($produtos as $Produto )
+
 
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
-        <img src="https://source.unsplash.com/featured/1200x900/?sculpture,hotel" alt="Hotel">
+        <img src="" alt="Hotel">
       </div>
         <div class="card-info">
-          <div class="card-text big cardText-js">{{$Produto->name ?? 'Não encontrado' }}</div>
-          <div class="card-text small">{{$Produto->name ?? 'Não encontrado' }}</div>
+          <div class="card-text big cardText-js">{{$Produto->Nome_Produto ?? 'Não encontrado' }}</div>
+          <div class="card-text small">{{$Produto->Nome_Produto ?? 'Não encontrado' }}</div>
           <div class="card-text small">
             Starts from: 
-            <span class="card-price"> {{$Produto->preco ?? 'Não encontrado' }}</span>
+            <span class="card-price"> {{$Produto->Preco_Produto ?? 'Não encontrado' }}</span>
           </div>
         </div>
         </a>
     </div>
-    
     @endforeach 
 
   </div>
@@ -42,17 +40,17 @@
         <img src="https://source.unsplash.com/featured/1200x900/?hotel-room,interior">
       </div>
         <div class="card-info">
-          <div class="card-text big cardText-js">{{$ultimos->name ?? 'Não encontrado' }}</div>
-          <div class="card-text small">{{$ultimos->name ?? 'Não encontrado' }}</div>
+          <div class="card-text big cardText-js">{{$ultimos->Nome_Produto ?? 'Não encontrado' }}</div>
+          <div class="card-text small">{{$ultimos->Nome_Produto ?? 'Não encontrado' }}</div>
           <div class="card-text small">
-            <span  class="card-price"> {{$ultimos->preco ?? 'R$ 1.000' }}</span>
+            <span  class="card-price"> {{$ultimos->Preco_Produto ?? 'R$ 1.000' }}</span>
           </div>
         </div>
       </a>
     </div>
+    
+    
     @endforeach 
-
-
   </div>
 </section>
 </div>
@@ -67,11 +65,11 @@
     <div class="modal-info-header">
       <div class="left-side">
         <h1 class="modalHeader-js"></h1>
-        <p>{{$Produto->name ?? 'Não encontrado' }}</p>
+        <p>{{$Produto->Nome_Produto ?? 'Não encontrado' }}</p>
       </div>
       <div class="right-side">
       <b> Preço: </b>
-        <span class="amount"> {{$Produto->name ?? 'Preço ' }} </span>
+        <span class="amount"> {{$Produto->Preco_Produto ?? 'Preço ' }} </span>
       </div>
     </div>
     <div class="info-bar">
@@ -130,16 +128,16 @@
       <a href="#">Ver todos</a>
     </div>
     
-    @foreach($produtos as $Produto )
+    @foreach($ultimos_produtos as $Produto )
     <div class="card-wrapper">
       <div class="card">
         <div class="profile-info-wrapper">
           <div class="profile-img-wrapper">
             <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
           </div>
-          <p>{{$Produto->name ?? 'Produ não encontrado' }} </p>
+          <p>{{$Produto->Nome_Produto ?? 'Produ não encontrado' }} </p>
         </div>
-        <p> {{$Produto->name ?? 'Não encontrado' }}</p>
+        <p> {{$Produto->Preco_Produto ?? 'Não encontrado' }}</p>
       </div>
     </div>
     

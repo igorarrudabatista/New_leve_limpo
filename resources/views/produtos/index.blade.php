@@ -222,18 +222,18 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                              <b> ID: </b> <big> {{ $produtos->id }} </big> <br> 
+                              <b> ID do Produto: </b> <big> {{ $produtos->id }} </big> <br> 
                               <b> Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
                         
                               </div>
                               <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         
                                 {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
 
                                 {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
         
                                 {!! Form::close() !!}
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                               </div>
                             </div>
                           </div>

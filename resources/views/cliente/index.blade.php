@@ -154,10 +154,11 @@
             </button>
           </div>
           <div class="modal-body">
-          <b> ID: </b> <big> {{ $empresa_clientes->id }} </big> <br> 
+          <b> ID de cliente: </b> <big> {{ $empresa_clientes->id }} </big> <br> 
           <b> Cliente: </b> <big> {{$empresa_clientes->Nome_fantasia ?? 'Sem registros'  }} </big> <br> 
     
           </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <div class="modal-footer">
     
             {!! Form::open(['method' => 'DELETE','route' => ['cliente.destroy', $empresa_clientes->id],'style'=>'display:inline']) !!}
@@ -165,7 +166,6 @@
 
 
           {!! Form::close() !!}
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>

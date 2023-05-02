@@ -16,7 +16,7 @@ class Contrato extends Model
         'empresa_cliente_id', 'DescProdutos', 'DataEntrega', 'DataRetirada', 'Descrição', 'MensagemCliente',
         'Observacoes'
     ];
-    protected $table = 'Contrato';
+    protected $table = 'contrato';
     public $timestamps = false;
 
 

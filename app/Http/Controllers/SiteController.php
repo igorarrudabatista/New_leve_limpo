@@ -18,7 +18,7 @@ class SiteController extends Controller
         $search = request('search');
 
         if($search) {
-            $produtos = Produto::where ([['name', 'like', '%'.$search. '%' ]])->get();
+            $produtos = Produto::where ([['Nome_Produto', 'like', '%'.$search. '%' ]])->get();
 
              } else {
                 $produtos = Produto::all();

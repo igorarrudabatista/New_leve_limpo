@@ -141,7 +141,6 @@
   </script>
   
   <!-- partial -->
-    <script  src="./script.js"></script>
     <script src="{{asset('/js/site/script.js')}}"></script>
   
   </body>

@@ -184,18 +184,18 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                      <b> ID: </b> <big> {{ $contratos->id }} </big> <br> 
+                                      <b> N° de Contrato: </b> <big> {{ $contratos->id }} </big> <br> 
                                       <b> Empresa: </b> <big> {{$contratos->empresa_cliente->Nome_fantasia ?? 'Sem registros'  }} </big> <br> 
                                 
                                       </div>
                                       <div class="modal-footer">
                                 
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                         {!! Form::open(['method' => 'DELETE','route' => ['contrato.destroy', $contratos->id],'style'=>'display:inline']) !!}
                               
                                         {!! Form::submit('Deletar', ['class' => 'btn btn-danger text-light']) !!}
                                         
                                         {!! Form::close() !!}
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                       </div>
                                     </div>
                                   </div>
