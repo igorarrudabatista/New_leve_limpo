@@ -59,9 +59,8 @@
                                                                 <span class="input-group-text"
                                                                     id="inputGroupPrepend2">R$</span>
                                                             </div>
-                                                            <input type="text" class="form-control" id="Preco_Produto" 
-                                                            data-mask-selectonfocus="true"
-                                                                name="Preco_Produto">
+                                                            {!! Form::text('Preco_Produto', null, array('class' => 'form-control')) !!}
+
                                                         </div>
                                                         <button type="button" class="btn btn-danger" data-toggle="popover" title="utilize o ponto (.) em vez de vírgula para declarar o valor" data-content="utilize o ponto (.) em vez de vírgula para declara o valor">Clqiue para ler a Dica</button>
                                                     </div>
