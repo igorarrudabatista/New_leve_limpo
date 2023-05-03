@@ -11,8 +11,7 @@ class SiteController extends Controller
     public function index() {
 
         $ultimos_produtos = Produto::orderBy('id', 'DESC')->limit(8)->get();
-
-     $produtos = Produto::limit(2)->get();
+        $produtos =         Produto::orderBy('id', 'ASC')->limit(9)->get();
      //   $produtos = Produto::paginate(10);
 
         $search = request('search');
