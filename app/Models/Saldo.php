@@ -16,4 +16,8 @@ class Saldo extends Model
     public function empresa_cliente(){
         return $this->belongsTo(Empresa_Cliente::class);
         }
+
+    public function produto(){
+            return $this->belongsTo(Produto::class);
+        }    
 }

@@ -16,7 +16,7 @@ class Recibo extends Model
         'empresa_cliente_id', 'DataEntrega', 'DataRetirada', 'Descrição', 'MensagemCliente',
         'Observacoes', 'Taxa', 'Desconto'
     ];
-    protected $table = 'recibo';
+    protected $table = 'Recibo';
     public $timestamps = false;
 
 
@@ -24,7 +24,7 @@ class Recibo extends Model
         return $this->belongsToMany(Produto::class)->withPivot(['Quantidade']);
     }   
     
-  public function empresa_cliente() {
+    public function empresa_cliente() {
       return $this->belongsTo(Empresa_Cliente::class, 'empresa_cliente_id');
       }      
 

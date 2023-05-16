@@ -11,9 +11,21 @@ class Empresa_Cliente extends Model
 
 
     use HasFactory;
-    
+    protected $table = 'empresa__clientes';
+
     protected $guarded = [];
-    
+
+    protected $fillable = [
+        'Cnpj', 'Nome_responsavel', 'Nome_fantasia', 'Cpf', 'Email',
+        'Telefone', 'Site', 'Endereco','Cidade', 'Estado', 'Bairro',
+         'Cep', 'Numero', 'Instagram', 'Facebook', 'image'
+    ];
+
+
+    public function produto() {
+        return $this->belongsToMany(Produto::class)->withPivot(['Quantidade']);
+    }   
+
     public function orcamento(){
         return $this->belongsTo(Orcamento::class);
         

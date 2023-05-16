@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('saldo', function (Blueprint $table) {
 
-            $table->increments('id');
-            $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
             $table->string('valor_saldo')->nullable();
             $table->string('Observacoes')->nullable();
-            $table->timestamps();
             
+            $table->unsignedInteger('saldo_id');
+            $table->foreign('saldo_id')->references('id')->on('produtos')->onDelete('cascade');
+                   
         });
     }
 

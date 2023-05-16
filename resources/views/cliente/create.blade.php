@@ -262,18 +262,12 @@
                                     {!! Form::text('Facebook', null, ['class' => 'form-control']) !!}
                                 </div>
                             </div>
-                            </div>
-             
-               
-
-
-
-                          </div>
+                            </div>             
+                           </div>
 <hr>
                           <button type="submit"
                           class="btn btn-primary me-1 mb-1 text-light">Salvar
                       </button>
-                    </form>
                       </div>
                     </div>
                   </div>
@@ -289,117 +283,164 @@
                             <img class="avatar border-gray" src="{{ asset('/images/cart.png') }}" alt="...">
                           </a>
                         </div>
-
+                        
                         <div class="text-left mb-5">
-                            <h6> <strong> Conta </strong></h6>
-
-                            <div class="text-center mb-5">
-                                <h5> <strong> Saldo Atual </strong></h5>
-
-                                <h1 class="text-danger">
-                                  <strong>  R$ 10,00 </strong> </h1>
-
-                                <h1 class="text-success">
-                                  <strong>  R$ 10,00 </strong> </h1>
-
-
-<!-- Button trigger modal -->
-<svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
-<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
- Adicionar
-  </button>
+                          <h6> <strong> Conta </strong></h6>
+                          
+                          <div class="text-center mb-5">
+                            <h5> <strong> Saldo Atual </strong></h5>
+                            
+                            <h1 class="text-danger">
+                              <strong>  R$ 10,00 </strong> </h1>
+                              
+                              <h1 class="text-success">
+                                <strong>  R$ 10,00 </strong> </h1>
+                                
+                                
+                                <!-- Button trigger modal -->
+                                
   
-  <!-- Modal 1 -->
-  <div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-            <div class="typography-line">
-                <blockquote>
-                  <p class="blockquote blockquote-danger">
-                    Adicione o cliente para editar o saldo.
-                  </p>
-                </blockquote>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
   
-  <!-- Modal 2 -->
-  <button type="button" class="btn btn-secondary btn-sm btn-danger" data-toggle="modal" data-target="#subtrair_valor">
-      Subtrair
+  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
+   Adicionar
     </button>
-    <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" fill="red"></path> </svg>
-    <div class="modal fade" id="subtrair_valor" tabindex="-1" role="dialog" aria-labelledby="subtrair_valorTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
     
-                <div class="typography-line">
-                    <blockquote>
-                      <p class="blockquote blockquote-danger">
-                        Adicione o cliente para editar o saldo.
-                      </p>
-                    </blockquote>
-                  </div>    
+    <!-- Modal 1 -->
+    <div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Adicionar valor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+  
+            <div class="row">
+              <div class="col-md-5 pr-1">
+                <div class="form-group">
+                  <label>Valor</label>
+                  <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="now-ui-icons business_money-coins"> R$ </i> 
+                      </span>
+                      {{-- <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$clientes}}" >  --}}
+  
+                      {!! Form::text('valor_saldo', null, array('class' => 'form-control')) !!}
+                    </div>                            </div>
+              </div>
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="now-ui-icons text_align-left"></i>
+                      </span> 
+                      {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
+                    </div>
+                  </div>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-success">Adicionar valor</button>
           </div>
         </div>
       </div>
-
-                                
-                            </div>
-
-
-                        </div>
-                      </div> </div>
-
-                      <div class="card card-user">
-                        <div class="image">
-                          </div>
-                        <div class="card-body">
-                          <div class="author">
-                            <a>
-                            </a>
-                          </div>
-  
-                          <div class="text-left mb-5">
-                            <h6> <strong> Conta </strong></h6>
-
-                            <div class="text-center mb-5">
-                                <h5>Saldo Atual</h5>
-
-                                <h2> <strong>  R$ 10,00 </strong> </h2>
-                                <big><i class="now-ui-icons business_money-coins"></i></big> R$
-
-                                <button type="button" class="btn btn-primary btn-sm">Adicionar</button>
-                                <button type="button" class="btn btn-secondary btn-sm">Subtrair</button>                     
-                                
-                            </div>
-
-
-                        </div>
-                      </div>
-                    </div>                    
+    </div>
+    
+    <!-- Modal 2 -->
+    <button type="button" class="btn btn-secondary btn-sm btn-danger" data-toggle="modal" data-target="#subtrair_valor">
+        Subtrair
+      </button>
+      <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" fill="red"></path> </svg>
+      <div class="modal fade" id="subtrair_valor" tabindex="-1" role="dialog" aria-labelledby="subtrair_valorTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Subtrair valor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <div class="modal-body">
+      
+            <div class="row">
+              <div class="col-md-5 pr-1">
+                <div class="form-group">
+                  <label class="text-danger">
+                    Valor</label>
+                  <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="now-ui-icons business_money-coins"> R$ </i> 
+                      </span>
+                      {!! Form::text('valor_saldo', null, array('class' => 'form-control')) !!}
+                    </div>                            </div>
+              </div>
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">
+                        <i class="now-ui-icons text_align-left"></i>
+                      </span> 
+                      {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
+                    </div>
+                  </div>
+              </div>
+            </div>    
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger">Subtrair valor</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    
+                
+      </form>     
+                        
+      </div>
+  
+  
+    </div>
+  </div> </div>
+  
+  <div class="card card-user">
+    <div class="image">
+      </div>
+    <div class="card-body">
+      <div class="author">
+        <a>
+        </a>
+      </div>
+  
+      <div class="text-left mb-5">
+        <h6> <strong> Conta </strong></h6>
+  
+        <div class="text-center mb-5">
+            <h5>Saldo Atual</h5>
+  
+            <h2> <strong>  R$ 10,00 </strong> </h2>
+            <big><i class="now-ui-icons business_money-coins"></i></big> R$
+  
+            <button type="button" class="btn btn-primary btn-sm">Adicionar</button>
+            <button type="button" class="btn btn-secondary btn-sm">Subtrair</button>                     
+            
+        </div>
+  
+  
+    </div>
+  </div>
+  </div>                    
+  </div>
+  
 
 
                 <script>

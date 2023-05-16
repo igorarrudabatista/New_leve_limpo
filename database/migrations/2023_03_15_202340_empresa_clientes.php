@@ -32,7 +32,6 @@ return new class extends Migration
             $table->string('Numero')->nullable();
             $table->string('Instagram')->nullable();
             $table->string('Facebook')->nullable();
-            $table->foreignId('saldo_id')->constrained('saldo')->onDelete('cascade');
             $table->string('image')->nullable();
 
 
