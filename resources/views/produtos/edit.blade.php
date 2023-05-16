@@ -2,6 +2,7 @@
 @section('content')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<link rel="stylesheet" href="{{asset('/css/upload-style.css')}}">
 
 <div class="panel-header panel-header-sm">
 </div>
@@ -89,10 +90,22 @@
       <option value="0"> Desativado </option>
         <option value="1"> Ativo </option>
       </select>    
-    </div> </div>
+    </div>
+  </div>
 
     <div class="col-md-6 mb-4">
-    
+      <div class="upload">
+        <input type="file" title="" id="image" name="image"  class="drop-here">
+        <div class="text text-drop">Imagem</div>
+        <div class="text text-upload">Enviando</div>
+        <svg class="progress-wrapper" width="300" height="300">
+          <circle class="progress" r="115" cx="150" cy="150"></circle>
+        </svg>
+        <svg class="check-wrapper" width="130" height="130">
+          <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+        </svg>
+        <div class="shadow"></div>
+      </div>     
 
 
 

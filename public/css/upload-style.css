@@ -1,7 +1,7 @@
 .upload {
   --background: #FFFFFF;
   --text-drop: #CAC8CA;
-  --text-upload: #2D2C2F;
+  --text-upload: #e69539;
   --progress-color: #E7E5E7;
   --check-color: var(--text-upload);
   --border-radius: 30px;
@@ -11,6 +11,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+
 }
 .upload::before {
   content: "";

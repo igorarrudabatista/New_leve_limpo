@@ -12,7 +12,7 @@
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
-        <img src="https://source.unsplash.com/featured/1200x900/?sculpture,hotel" alt="Hotel">
+        <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
       </div>
         <div class="card-info">
           <div class="card-text big cardText-js">{{$Produto->Nome_Produto ?? 'Não encontrado' }}</div>
@@ -41,7 +41,7 @@
     <div class="card-wrapper main-card">
       <a class="card cardItemjs"  onclick="openModal()">
         <div class="card-image-wrapper">
-        <img src="https://source.unsplash.com/featured/1200x900/?hotel-room,interior">
+        <img src="{{asset('/images/produtos/')}}/{{$ultimos->image}}">
       </div>
         <div class="card-info">
           <div class="card-text big cardText-js">{{$ultimos->name ?? 'Não encontrado' }}</div>
@@ -58,13 +58,13 @@
   </div>
 </section>
 </div>
-@foreach($produtos as $Produto )
+@foreach($produtos as $Produto)
 
 <div id="modal-window" class="shadow">
 <div class="main-modal">
   <div class="modal-left">
     <div class="modal-image-wrapper">
-      <img src="https://source.unsplash.com/featured/1200x900/?design,hotel">
+      <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}">
     </div>
     <div class="modal-info-header">
       <div class="left-side">
@@ -104,7 +104,7 @@
     </div>
     <div class="desc-wrapper">
       <div class="modal-info-header">
-        <h1>Description</h1>
+        <h1>Descrição</h1>
         <p>
           {{$Produto->Descricao ?? 'Não encontrado' }}
         </p>
@@ -119,7 +119,7 @@
             <span class="favourite-icon">
               <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>  
             </span>
-            <span>Favoritar</span>
+            <span>Eu quero!</span>
           </label>
         </div>
       </div>

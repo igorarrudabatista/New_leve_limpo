@@ -78,6 +78,12 @@
                 <p>Painel </p>
               </a>
             </li>
+            <li class="{{ (request()->is('vender')) ? 'active' : '' }}">  
+              <a href="{{ asset('/vender') }}">
+                <i class="now-ui-icons design_app"></i>
+                <p>VENDER </p>
+              </a>
+            </li>
             
             <li class="{{ (request()->is('calendar/index')) ? 'active' : '' }}">  
               <a href="{{ asset('/calendar/index') }}">
@@ -88,8 +94,15 @@
 
             <li class="{{ (request()->is('minhaempresa')) ? 'active' : '' }}">  
               <a href="{{ asset('/minhaempresa') }}">
-                <i class="now-ui-icons shopping_shop"></i>
+                <i class="now-ui-icons shopping_cart"></i>
                 <p>Minha Empresa</p>
+              </a>
+            </li>
+
+            <li class="{{ (request()->is('pedidos')) ? 'active' : '' }}">  
+              <a href="{{ asset('/pedidos') }}">
+                <i class="now-ui-icosns ">2</i>
+                <p>PEDIDOS </p>
               </a>
             </li>
 
@@ -179,19 +192,34 @@
               <span class="navbar-toggler-bar navbar-kebab"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <form>
-                <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Procurar...">
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <i class="now-ui-icons ui-1_zoom-bold"></i>
-                    </div>
-                  </div>
-                </div>
-              </form>
+
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#pablo">
+                  <a class="nav-link" href="/Site">
+                    <i class="now-ui-icons media-2_sound-wave"></i>
+                    <p>
+                      <span class="d-lg-none d-md-block">Stats</span>
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Site">
+                    <i class="now-ui-icons media-2_sound-wave"></i>
+                    <p>
+                      <span class="d-lg-none d-md-block">Stats</span>
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Site">
+                    <i class="now-ui-icons media-2_sound-wave"></i>
+                    <p>
+                      <span class="d-lg-none d-md-block">Stats</span>
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Site">
                     <i class="now-ui-icons media-2_sound-wave"></i>
                     <p>
                       <span class="d-lg-none d-md-block">Stats</span>

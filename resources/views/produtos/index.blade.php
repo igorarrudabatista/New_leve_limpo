@@ -18,11 +18,9 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
           <br>
-              <h1 class="app-page-title mb-0">PRODUTOS</h1> <br>
-
-        <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn bg-primary text-light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
-          <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5ZM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6l.5.667Z"/>
-        </svg> Adicionar Produto </button> </a>
+              <h1 class="app-page-title mb-0">PRODUTOS </h1> 
+              <p> <big>{{$produtoqtd}} </big> Produtos cadastrados</p>
+  
         </div>
 
 
@@ -42,12 +40,15 @@
               </div><!--//col-->
               <div class="col-auto">						    
                 <a class="btn app-btn-secondary" href="{{asset('/produto/export')}}">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-</svg>
-                  Download Excel
+                <big><i class="now-ui-icons arrows-1_cloud-download-93"></i>  </big>
+
+
+
+
               </a>
+              <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn bg-primary text-light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-fill" viewBox="0 0 16 16">
+                <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5ZM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6l.5.667Z"/>
+              </svg> Adicionar Produto </button> </a>
               </div>
               <div class="col-auto">						    
                 @if ($search)
@@ -121,6 +122,7 @@
         <table class="table app-table-hover mb-0 text-left">
               <thead>
                   <tr>
+                    <th></th>
                     <th class="cell">Status</th> 
                     <th class="cell">Nome</th>
                     <th class="cell">Categoria</th>
@@ -135,9 +137,12 @@
                 @foreach($produto as $produtos )
                 
                 <tbody>
-                  <tr>
-              
-
+                  <td> 
+                
+                      <a href="{{asset('/produtos/edit/')}}/{{$produtos->id}}">
+                         <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" width="100px" > </a>
+                        <span></span>
+                      </td>
 
                     <td class="cell">
                       @switch($produtos)
@@ -206,9 +211,10 @@
                       <!-- Butão de deletar -->
                       <td>     
                         <a class="btn btn-warning" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a>
-                       
+                      </td>
+                      <td>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $produtos->id }}" data-id="{{ $produtos->id }}">
-                          <i class="now-ui-icons ui-1_simple-remove"></i>  Deletar
+                       <big> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.82907 7.48718H18.6325V20.1197C18.6325 21.2242 17.7371 22.1197 16.6325 22.1197H7.82907C6.7245 22.1197 5.82907 21.2242 5.82907 20.1197V7.48718Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 4.74353L20.4615 4.74353" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M14.9134 2H9.54816L8.57266 4.74359H15.8889L14.9134 2Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="12.3163" y1="11.2307" x2="12.3163" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="9.57266" y1="11.2307" x2="9.57266" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="15.0598" y1="11.2307" x2="15.0598" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
                         </button>
                         
                         <!-- Modal -->
@@ -222,9 +228,10 @@
                                 </button>
                               </div>
                               <div class="modal-body">
+                                <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" width="100px" > </a> <br>
                               <b> ID do Produto: </b> <big> {{ $produtos->id }} </big> <br> 
-                              <b> Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
-                        
+                              <b> Nome do Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
+ 
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -243,34 +250,34 @@
                                                  
                          </td>
 
-
-
-              
-                                 
-                        
-
-                  </form>
-                  </tr>
-              
-                  
-                  @endforeach
-                </tbody>
-              </table>
+                         
+                         
+                         
+                         
+                         
+                        </form>
+                      </tr>
+                      
+                      
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div><!--//table-responsive-->
-            </div><!--//app-card-body-->	
-
-
-        </div><!--//app-card-->
+              </div><!--//app-card-body-->	
+              
+              
+            </div><!--//app-card-->
           </div><!--//tab-pane-->
-    </div><!--//tab-content-->
+        </div><!--//tab-content-->
+        
+        
+      </div><!--//container-fluid-->
+    </div><!--//app-content-->
     
-
-    </div><!--//container-fluid-->
-  </div><!--//app-content-->
+    
+    
+  </div><!--//app-wrapper-->    		
   
-
-  
-</div><!--//app-wrapper-->    		
 
 
 

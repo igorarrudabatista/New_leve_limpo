@@ -25,6 +25,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $titulo = 'Produtos';
+        $produtoqtd  = Produto::count();
 
         $produto = Produto::get();
 
@@ -36,7 +37,7 @@ class ProdutoController extends Controller
              } else {
                 $produto = Produto::all();
             }
-        return view('produtos.index',compact('produto','search', 'titulo'));
+        return view('produtos.index',compact('produto','search', 'titulo', 'produtoqtd'));
        
     }
     
@@ -133,10 +134,21 @@ class ProdutoController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produto $produto) 
-    {
-        $produto->update($request->all());
+    public function update(Request $request, Produto $produto) {
+    
+    
+  // $produto->update($request->all());   
+    
+   // $produto->body = $request->body;
 
+    $produto -> Nome_Produto       = $request->Nome_Produto;
+    $produto -> Categoria_Produto  = $request->Categoria_Produto;
+    $produto -> Status_Produto     = $request->Status_Produto;
+    $produto -> Preco_Produto      = $request->Preco_Produto;
+    $produto -> Estoque_Produto    = $request->Estoque_Produto;
+    $produto -> Quantidade_Produto = $request->Quantidade_Produto;
+
+    //  $produto = $request->all();
 
         
         // Imagem do produto upload
@@ -148,13 +160,13 @@ class ProdutoController extends Controller
             
             $imageName = md5($requestImage -> getClientOriginalName() . strtotime("now")) . "." . $extension;
             
-            $request -> image->move(public_path('images/empresa'), $imageName);
+            $request -> image->move(public_path('images/produtos'), $imageName);
             
-            $data['image'] = $imageName;
+            $produto -> image = $imageName;
             
         }
-        toast('Cliente editado com sucesso!','success');
-
+        
+        $produto->update();
 
 
      
