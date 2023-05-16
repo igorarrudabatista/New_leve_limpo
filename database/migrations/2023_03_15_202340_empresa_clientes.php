@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('empresa__clientes', function (Blueprint $table) {
             $table->id();
-        //    $table->string('Nome_Empresa')->nullable();
+            
+            //    $table->string('Nome_Empresa')->nullable();
             $table->string('Cnpj')->nullable();
             $table->string('Nome_responsavel')->nullable();
             $table->string('Nome_fantasia')->nullable();
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->string('Numero')->nullable();
             $table->string('Instagram')->nullable();
             $table->string('Facebook')->nullable();
+            $table->foreignId('saldo_id')->constrained('saldo')->onDelete('cascade');
             $table->string('image')->nullable();
 
 

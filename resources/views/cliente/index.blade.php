@@ -17,12 +17,8 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
           <br>
-          <h1 class="app-page-title mb-0">CLIENTES</h1> <br>
-
-        <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn bg-primary text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
-        </svg> Adicionar Clientes</button> </a>
-
+          <h1 class="app-page-title mb-0">CLIENTES</h1>
+          <p> <big>{{$clienteqtd}} </big> Clientes cadastrados</p>
         </div>
 
 
@@ -40,18 +36,18 @@
                       </form>
                       
               </div><!--//col-->
-              <div class="col-auto">
-                
-             
+
+
+              <div class="col-auto">          
               </div>
+
               <div class="col-auto">						    
                 <a class="btn app-btn-secondary" href="{{asset('clientes/export')}}">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-</svg>
-                  Download Excel
+                  <big><i class="now-ui-icons arrows-1_cloud-download-93"></i>  </big>
               </a>
+              <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn bg-primary text-light">
+                <big><i class="now-ui-icons users_single-02"></i>  </big>
+                Novo Cliente </button> </a>
               </div>
             </div><!--//row-->
           </div><!--//table-utilities-->
@@ -115,33 +111,44 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">Id</th>
+                    <th class="cell"></th>
                     <th class="cell">Nome</th>
-                    <th class="cell">Telefone</th>
-                    <th class="cell">Local</th>
-                    <th class="cell">Ações</th>
+                    <th class="cell">Celular/Whatsapp</th>
+                    <th class="cell">Cidade/Estado</th>
+                    <th class="cell"><i class="now-ui-icons business_money-coins"></i>  Saldo</th>
                     <th class="cell"></th>
 
                   </tr>
                 </thead>
-                @foreach($cliente as $empresa_clientes )
+
+                @foreach ($cliente as $key => $empresa_clientes)
+
                 
                 <tbody>
                   <tr>
-                    <td class="cell">{{$empresa_clientes->id}}</td>
+                    <td class="cell"><big> <i class="now-ui-icons users_circle-08"></i> </big> </td>
                     <td class="cell"><span class="truncate">{{$empresa_clientes->Nome_fantasia}}</span></td>
-                    <td class="cell">{{$empresa_clientes->Telefone}}</td>
+                    <td class="cell"> <a class="btn btn-success text-light" target=_blank href="https://wa.me/+55{{$empresa_clientes->Telefone ?? ''}}">
+                      <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16"> <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" fill="white"></path> </svg>
+                      {{$empresa_clientes->Telefone}} </a> </td>
                     <td class="cell"><span>{{$empresa_clientes->Cidade}}</span> - <span>{{$empresa_clientes->Estado}}</span>
           
-                    <td class="cell">
 
+                      <td>
+                        {{-- {{ ?? 'Não encontrado'}} --}}
+
+                        <big><span class="text-danger">R$ 10,00  </span> </big>
+                        <big><span class="text-success">R$ 10,00  </span> </big>
+                    
+                      </td>
    <!-- Butão de deletar -->
    <td>     
     <a class="btn btn-warning text-light" href="{{ route('cliente.edit',$empresa_clientes->id) }}">Editar</a>
-   
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $empresa_clientes->id }}">
-      <i class="now-ui-icons ui-1_simple-remove"></i>  Deletar
-    </button>
+   </td>
+   <td>
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal{{ $empresa_clientes->id }}">
+      <big> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.82907 7.48718H18.6325V20.1197C18.6325 21.2242 17.7371 22.1197 16.6325 22.1197H7.82907C6.7245 22.1197 5.82907 21.2242 5.82907 20.1197V7.48718Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 4.74353L20.4615 4.74353" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M14.9134 2H9.54816L8.57266 4.74359H15.8889L14.9134 2Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="12.3163" y1="11.2307" x2="12.3163" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="9.57266" y1="11.2307" x2="9.57266" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="15.0598" y1="11.2307" x2="15.0598" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+      </button>
     
     <!-- Modal -->
     <div class="modal fade" id="exampleModal{{ $empresa_clientes->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -154,12 +161,12 @@
             </button>
           </div>
           <div class="modal-body">
-          <b> ID de cliente: </b> <big> {{ $empresa_clientes->id }} </big> <br> 
+            <i class="now-ui-icons users_circle-08"></i> </big>          <b> ID de cliente: </b> <big> {{ $empresa_clientes->id }} </big> <br> 
           <b> Cliente: </b> <big> {{$empresa_clientes->Nome_fantasia ?? 'Sem registros'  }} </big> <br> 
     
           </div>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
     
             {!! Form::open(['method' => 'DELETE','route' => ['cliente.destroy', $empresa_clientes->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Deletar', ['class' => 'btn btn-danger text-light']) !!}
@@ -172,10 +179,7 @@
     </div>                                              
                              
      </td>
-  <td> <a class="btn btn-success text-light" target=_blank href="https://wa.me/+55{{$empresa_clientes->Telefone ?? ''}}">
-  <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16"> <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" fill="white"></path> </svg>
-  Whatsapp</a>
-  </td>
+
                      
 
      </form>

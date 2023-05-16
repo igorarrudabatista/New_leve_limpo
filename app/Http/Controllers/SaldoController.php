@@ -16,7 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 
 
-class Empresa_ClienteController extends Controller
+class SaldoController extends Controller
 {
 
       /**
@@ -26,10 +26,10 @@ class Empresa_ClienteController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:cliente-list|cliente-create|cliente-edit|cliente-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:cliente-create', ['only' => ['create','store','saldo_store']]);
-         $this->middleware('permission:cliente-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:cliente-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:saldo-list|saldo-create|saldo-edit|saldo-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:saldo-create', ['only' => ['create','store']]);
+         $this->middleware('permission:saldo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:saldo-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -38,7 +38,6 @@ class Empresa_ClienteController extends Controller
      */
     public function index()
     {
-
 
         $clienteqtd  = Empresa_Cliente::count();
         $saldo = Saldo::with('empresa_cliente')->get();  
@@ -59,6 +58,7 @@ class Empresa_ClienteController extends Controller
                                       'titulo' => $titulo, 
                                       'clienteqtd' =>$clienteqtd,
                                       'saldo' =>$saldo,
+                                    
                                     ]);
 
     }
@@ -70,25 +70,15 @@ class Empresa_ClienteController extends Controller
 //      */
    public function create()
    {
-    $titulo = 'Clientes';
 
-    $clientes = Empresa_Cliente::all();
 
-    $search = request('search');
-    $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
+    //$clientes = Empresa_Cliente::all();
 
-    $result = '';
-
-    $data = json_decode($response); // convert JSON into objects 
 
     
     
     //dd($data);
-    return view('cliente.create', ['search' => $search,
-                                   'data' =>$data,
-                                   'clientes' =>$clientes,
-                                   'result' =>$result,
-                                   'titulo' =>$titulo,
+    return view('cliente.create', [
                                   ]);
 
    }
@@ -107,15 +97,11 @@ class Empresa_ClienteController extends Controller
     {
 
     
-        Empresa_Cliente::create($request->all());
+        Saldo::create($request->all());
     
          return redirect()->route('cliente.index')
-                         ->with('success','Cliente criado com sucesso!');
+                         ->with('success','Saldo criado com sucesso!');
      }
-
-
-
-
     
 //     /**
 //      * Display the specified resource.
@@ -124,9 +110,9 @@ class Empresa_ClienteController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
 
-    public function show(Empresa_Cliente $cliente)
+    public function show(Saldo $saldo)
     {
-        return view('cliente.show',compact('cliente'));
+        return view('cliente.show',compact('saldo'));
     }
 //     /**
 //      * Show the form for editing the specified resource.
@@ -134,15 +120,10 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(Empresa_Cliente $cliente)
+     public function edit(Saldo $saldo)
      {
-        $titulo = 'Clientes';
-        $saldo = Saldo::with('empresa_cliente')->get();
 
-        $clientes = Empresa_Cliente::get();
-
-
-         return view('cliente.edit',compact('cliente', 'titulo', 'clientes', 'saldo'));
+         return view('saldo.edit',compact('saldo'));
      }
     
 //     /**
@@ -152,10 +133,10 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, Empresa_Cliente $cliente)
+     public function update(Request $request, Saldo $saldo)
      {
     
-         $cliente->update($request->all());
+         $saldo->update($request->all());
     
          return redirect()->route('cliente.index')
                          ->with('edit','Cliente Atualiazado com sucesso!');
@@ -167,9 +148,9 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(Empresa_Cliente $cliente)
+     public function destroy(Saldo $saldo)
      {
-         $cliente->delete();
+         $saldo->delete();
     
          return redirect()->route('cliente.index')
                          ->with('delete','Cliente deletado com sucesso!');

@@ -42,6 +42,7 @@ Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
+Route::resource('saldo',                     Empresa_ClienteController::class);
 
 
 Route::get('/produto/export',     [ProdutoController::class,         'export']); //OK

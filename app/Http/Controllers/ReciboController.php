@@ -135,7 +135,7 @@ class ReciboController extends Controller
         
       //  $recibo          = Recibo::with('empresa_cliente')->get();  
         $minha_empresa   = MinhaEmpresa::all();
-        $recibox   = Recibo::all();
+        $recibox         = Recibo::all();
 
         return view('recibo.contrato', ['recibo'        => $recibo, 
                                        'minha_empresa' => $minha_empresa,

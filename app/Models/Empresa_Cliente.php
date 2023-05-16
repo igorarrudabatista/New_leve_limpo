@@ -22,4 +22,8 @@ class Empresa_Cliente extends Model
     public function Recibo() {
         return $this->belongsTo(Recibo::class, 'empresa_cliente_id');
         }   
+    public function Saldo() {
+        return $this->belongsToMany(Saldo::class);
+        }   
+
 }
