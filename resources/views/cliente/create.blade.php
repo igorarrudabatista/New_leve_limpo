@@ -272,7 +272,6 @@
                     </div>
                   </div>
 
-                  {!! Form::close() !!}
 
 
                   <div class="col-md-4">
@@ -302,7 +301,8 @@
                                 
                                 <!-- Button trigger modal -->
                                 
-  
+{!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!} 
+
   <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
   
   <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
@@ -329,8 +329,10 @@
                       <span class="input-group-text" id="basic-addon1">
                         <i class="now-ui-icons business_money-coins"> R$ </i> 
                       </span>
-                      {{-- <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$clientes}}" >  --}}
-                      {!! Form::text('valor_saldo', null, ['class' => 'form-control']) !!}
+                      <input type="hidden" class="form-control" id="valor_saldo" name="valor_saldo" value="0" > 
+                      <input type="hidden" class="form-control" id="Observacoes" name="Observacoes" value="0" > 
+                      <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$clientes}}" > 
+
 
                     </div>
                   </div>

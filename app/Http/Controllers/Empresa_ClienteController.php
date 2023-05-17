@@ -155,22 +155,19 @@ class Empresa_ClienteController extends Controller
 //      */
      public function edit(Empresa_Cliente $cliente)
      {
-        $titulo = 'Clientes';
-        $saldo = Saldo::with('empresa_cliente')->get();
-
+        $titulo = $cliente->Nome_fantasia;
+       // $titulo = 'Cliente';
+        $saldo_historico = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->orderBy('valor_saldo', 'DESC')->get();
+        $saldo = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->get();
+        //$saldo = Saldo::with('empresa_cliente')->get();
         $clientes = Empresa_Cliente::get();
+       // $clientex = Empresa_Cliente::with('valor_saldo', 'empresa_cliente_id')->get();
+        //$saldo = Saldo::where('empresa_cliente_id', '=', $cliente);
 
-
-         return view('cliente.edit',compact('cliente', 'titulo', 'clientes', 'saldo'));
+         return view('cliente.edit',compact('cliente', 'titulo', 'clientes', 'saldo_historico', 'saldo',));
      }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
+
      public function update(Request $request, Empresa_Cliente $cliente)
      {
     

@@ -36,32 +36,7 @@ class SaldoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
 
-        $clienteqtd  = Empresa_Cliente::count();
-        $saldo = Saldo::with('empresa_cliente')->get();  
-        $titulo = 'Clientes';
-        $cliente = Empresa_Cliente::all();
-
-        $search = request('search');
-
-        if($search) {
-            $cliente = Empresa_Cliente::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
-
-             } else {
-                $cliente = Empresa_Cliente::all();
-            }
-        
-        return view('saldo.index', ['cliente'=> $cliente, 
-                                      'search' => $search, 
-                                      'titulo' => $titulo, 
-                                      'clienteqtd' =>$clienteqtd,
-                                      'saldo' =>$saldo,
-                                    
-                                    ]);
-
-    }
     
 //     /**
 //      * Show the form for creating a new resource.
@@ -86,14 +61,30 @@ class SaldoController extends Controller
 
     public function store(Request $request)
     {
+       // $cliente = Empresa_Cliente::get();
 
-        $cliente = Empresa_Cliente::get();
+        $sal =  new Saldo;
+        
+        $sal -> valor_saldo       = $request->valor_saldo;
+        $sal -> Observacoes       = $request->Observacoes;
+        $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
 
-      $a=   Saldo::create($request->all());
+        $sal ->save();
 
-       dd($a);
+      //  $a= Saldo::create($request->all());
+       // dd($sal);
+      
+    //$valor_saldo = $request->input('valor_saldo');
 
-      return view('cliente.index', ['cliente'=> $cliente, 
+      // $Observacoes = $request->input('Observacoes');
+
+      //  $recibo->saldo($valor_saldo);
+     //   $a->empresa_cliente()->attach($a);
+
+
+ //      dd($a);
+
+      return view('/cliente.index', [
                                     
                                     
                                     ]);
@@ -127,7 +118,15 @@ class SaldoController extends Controller
      public function update(Request $request, Saldo $saldo)
      {
     
-         $saldo->update($request->all());
+      //   $saldo->update($request->all());
+
+      $sal =  new Saldo;
+        
+      $sal -> valor_saldo       = $request->valor_saldo;
+      $sal -> Observacoes       = $request->Observacoes;
+      $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
+
+      $sal ->save();
     
          return redirect()->route('cliente.index')
                          ->with('edit','Cliente Atualiazado com sucesso!');

@@ -35,7 +35,7 @@ class Empresa_Cliente extends Model
         return $this->belongsTo(Recibo::class, 'empresa_cliente_id');
         }   
     public function saldo() {
-        return $this->belongsToMany(Saldo::class,'valor_saldo')->withPivot(['Observacoes']);
+        return $this->belongsToMany(Saldo::class,)->withPivot(['Observacoes']);
         }   
 
 }

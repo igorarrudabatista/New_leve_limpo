@@ -246,19 +246,33 @@
                       <div class="text-left mb-5">
                         <h6> <strong> Conta </strong></h6>
                         
+                        
                         <div class="text-center mb-5">
                           <h5> <strong> Saldo Atual </strong></h5>
-                          
-                          <h1 class="text-danger">
-                            <strong>  R$ 10,00 </strong> </h1>
+                              @foreach ($saldo as $clientes_saldo)
+
+                              <h1 class="text-success">
+                                <strong> R$ {{$clientes_saldo->valor_saldo}} </strong> </h1>
+                                
                             
-                            <h1 class="text-success">
-                              <strong>  R$ 10,00 </strong> </h1>
-                              
-                              
+
+                                @endforeach
+                 
+                            <h1 class="text-danger">
+                              <strong> -   R$ 10,00 </strong> </h1>
+                            Ver Extrato:<br>  
+
+                              @foreach ($saldo_historico as $clientes_saldo)
+
+                              <strong> R$ {{$clientes_saldo->valor_saldo}} </strong> </h1>
+                                
+                            
+
+                              @endforeach
                               <!-- Button trigger modal -->
-                              {!! Form::open(['route' => 'saldo.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                              
+{{-- {!! Form::open(['route' => 'saldo.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}                             --}}
+{!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!} 
+
 
 <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
 
@@ -286,10 +300,12 @@
                     <span class="input-group-text" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
-                    
-                    {!! Form::text('valor_saldo', null, array('class' => 'form-control')) !!}
+                    <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
+
+
                      <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
-                  </div>                            </div>
+                  </div>
+                </div>
             </div>
             <div class="col-md-6 pr-1">
               <div class="form-group">
@@ -338,7 +354,6 @@
                     <span class="input-group-text" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
-                    {!! Form::text('valor_saldo', null, array('class' => 'form-control')) !!}
                   </div>                            </div>
             </div>
             <div class="col-md-6 pr-1">
@@ -348,7 +363,6 @@
                     <span class="input-group-text" id="basic-addon1">
                       <i class="now-ui-icons text_align-left"></i>
                     </span> 
-                    {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
                   </div>
                 </div>
             </div>
