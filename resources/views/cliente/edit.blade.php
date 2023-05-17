@@ -252,7 +252,10 @@
                               @foreach ($saldo as $clientes_saldo)
 
                               <h1 class="text-success">
-                                <strong> R$ {{$clientes_saldo->valor_saldo}} </strong> </h1>
+                                <strong>
+                                  {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
+                                </strong>
+                              </h1>
                                 
                             
 
