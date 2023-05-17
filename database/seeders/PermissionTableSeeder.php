@@ -63,6 +63,11 @@ class PermissionTableSeeder extends Seeder
             'pedidos-create',
             'pedidos-edit',
             'pedidos-delete',
+            ///saldo
+            'saldo-list',
+            'saldo-create',
+            'saldo-edit',
+            'saldo-delete',
 
             
         ];

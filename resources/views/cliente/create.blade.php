@@ -271,7 +271,10 @@
                       </div>
                     </div>
                   </div>
-                 
+
+                  {!! Form::close() !!}
+
+
                   <div class="col-md-4">
                     <div class="card card-user">
                       <div class="image">
@@ -327,9 +330,10 @@
                         <i class="now-ui-icons business_money-coins"> R$ </i> 
                       </span>
                       {{-- <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$clientes}}" >  --}}
-  
-                      {!! Form::text('valor_saldo', null, array('class' => 'form-control')) !!}
-                    </div>                            </div>
+                      {!! Form::text('valor_saldo', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                  </div>
               </div>
               <div class="col-md-6 pr-1">
                 <div class="form-group">
@@ -404,7 +408,6 @@
   
     
                 
-      </form>     
                         
       </div>
   

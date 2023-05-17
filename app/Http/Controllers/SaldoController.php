@@ -53,7 +53,7 @@ class SaldoController extends Controller
                 $cliente = Empresa_Cliente::all();
             }
         
-        return view('cliente.index', ['cliente'=> $cliente, 
+        return view('saldo.index', ['cliente'=> $cliente, 
                                       'search' => $search, 
                                       'titulo' => $titulo, 
                                       'clienteqtd' =>$clienteqtd,
@@ -84,35 +84,26 @@ class SaldoController extends Controller
    }
 
 
-
-    
-
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
     public function store(Request $request)
     {
 
+        $cliente = Empresa_Cliente::get();
+
+      $a=   Saldo::create($request->all());
+
+       dd($a);
+
+      return view('cliente.index', ['cliente'=> $cliente, 
+                                    
+                                    
+                                    ]);
     
-        Saldo::create($request->all());
-    
-         return redirect()->route('cliente.index')
-                         ->with('success','Saldo criado com sucesso!');
+
      }
     
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-
     public function show(Saldo $saldo)
     {
-        return view('cliente.show',compact('saldo'));
+        return view('saldo.show',compact('saldo'));
     }
 //     /**
 //      * Show the form for editing the specified resource.

@@ -12,6 +12,7 @@ class Saldo extends Model
     protected $guarded = [];
 
     protected $table = 'saldo';
+    public $timestamps = false;
 
     public function empresa_cliente(){
         return $this->belongsTo(Empresa_Cliente::class);

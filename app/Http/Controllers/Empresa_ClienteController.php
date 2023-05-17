@@ -105,13 +105,32 @@ class Empresa_ClienteController extends Controller
 //      */
     public function store(Request $request)
     {
+      // Empresa_Cliente::create($request->all());
+        
+    Empresa_Cliente::create($request->all());
+    return redirect()->route('cliente.index')
+    ->with('success','Cliente criado com sucesso!');
+}
 
-    
-        Empresa_Cliente::create($request->all());
-    
-         return redirect()->route('cliente.index')
-                         ->with('success','Cliente criado com sucesso!');
-     }
+
+   //     $valor_saldo = $request->input('valor_saldo');
+     //   dd($recibo);
+     //   $Observacoes = $request->input('Observacoes');
+
+      // $recibo->saldo($valor_saldo);
+      //  $recibo->saldo()->attach(valor_saldo);
+
+        
+        // $products = $request->input('products', []);
+        // $quantities = $request->input('quantities', []);
+        // for ($product=0; $product < count($products); $product++) {
+        //     if ($products[$product] != '') {
+        //         $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+        //     }
+        // }
+
+
+
 
 
 

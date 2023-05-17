@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('recibo', function (Blueprint $table) {
 
         $table->increments('id');
+
         $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
+        
         $table->string('DataEntrega')->nullable();
         $table->string('DataRetirada')->nullable();
         $table->decimal('Taxa')->nullable();

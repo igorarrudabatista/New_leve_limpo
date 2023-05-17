@@ -97,6 +97,7 @@ class ReciboController extends Controller
                 }
             }
 
+                dd($recibo);
         return redirect()->route('recibos.index')
                         ->with('success','Recibo criado com sucesso!');
     }

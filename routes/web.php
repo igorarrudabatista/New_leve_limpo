@@ -8,13 +8,10 @@ use App\Http\Controllers\
     {
 
     Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController, ReciboController, ContratoController,
-    AgendaController,
-    HomeController, AlunosController, APIController, FichaController, PainelGerencialController, FornecedorController,
-    UsuariosController, RoleController, UserController, ProductController,
-    MinisterioController, PoloController, EscolaController, PessoaController,
-    PrazoController, ConselhoController,
-    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController,
-    ObjetosController, CatController, SiteController
+    HomeController, AlunosController, APIController, PainelGerencialController, FornecedorController,
+    UsuariosController, RoleController, UserController, 
+    PessoaController, Ficha_Conselho, CalendarController,
+    ObjetosController, SaldoController, SiteController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -42,7 +39,8 @@ Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
-Route::resource('saldo',                     Empresa_ClienteController::class);
+Route::resource('saldo',                     SaldoController::class);
+
 
 
 Route::get('/produto/export',     [ProdutoController::class,         'export']); //OK
