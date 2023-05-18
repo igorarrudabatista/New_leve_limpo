@@ -66,6 +66,8 @@ class SaldoController extends Controller
 
     public function store(Request $request)
     {
+
+
         $sal =  new Saldo;
         
         $sal -> valor_saldo              = $request->valor_saldo;
@@ -93,7 +95,10 @@ class SaldoController extends Controller
 
      public function update(Request $request, $id)
      {
-          $sal = Saldo::find($id);
+        $saldo_inicial  = Saldo::get();
+        $adicao = $request->valor_saldo + $saldo_inicial;
+  
+        $sal = Saldo::find($id);
 
 //https://pt.stackoverflow.com/questions/233677/update-com-soma-e-subtração-laravel
 
@@ -101,6 +106,10 @@ class SaldoController extends Controller
           $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
           $sal -> valor_saldo              = $request->valor_saldo;
   
+
+
+
+
           $sal ->save();        
           
           return back()->withInput();

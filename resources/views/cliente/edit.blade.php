@@ -393,33 +393,25 @@
   </div>
 </div> </div>
 
-<div class="card card-user">
+<div class="card card-usser">
   <div class="image">
     </div>
-  <div class="card-body">
-    <div class="author">
-      <a>
-      </a>
-    </div>
+  <div class="card-bodsy">
+
 
     <div class="text-left mb-5">
       <h6> <strong> Conta </strong></h6>
 
-      <div class="text-center mb-5">
-          <h5>Saldo Atual</h5>
-
-          <h2> <strong>  R$ 10,00 </strong> </h2>
-          <big><i class="now-ui-icons business_money-coins"></i></big> R$
-
-          <button type="button" class="btn btn-primary btn-sm">Adicionar</button>
-          <button type="button" class="btn btn-secondary btn-sm">Subtrair</button>                     
-          
-      </div>
-
-
+    
   </div>
+
+
+
 </div>
-</div>                    
+</div>      
+
+
+
 </div>
 
 

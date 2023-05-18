@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('saldo', function (Blueprint $table) {
 
+            $table->decimal('saldo_inicial',10,4)->nullable();
             $table->decimal('valor_saldo',10,4)->nullable();
             $table->string('Observacoes')->nullable();
 

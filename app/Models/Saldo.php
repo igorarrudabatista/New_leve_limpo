@@ -21,4 +21,29 @@ class Saldo extends Model
         }
 
 
+        public function setSomaSaldo($saldo)
+        {
+            // Conta Existente
+            if ($this->exists)
+            {
+                $this->attributes['valor_saldo'] =
+                    $this->attributes['valor_saldo'] + $saldo;
+                $this->save();
+            }
+            return $this;
+        }
+    
+        public function setSubtrairSaldo($saldo)
+        {
+            // Conta Existente
+            if ($this->exists)
+            {
+                $this->attributes['saldo'] =
+                    $this->attributes['saldo'] - $saldo;
+                $this->save();
+            }
+            return $this;
+        }
+
+
 }
