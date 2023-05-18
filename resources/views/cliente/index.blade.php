@@ -182,7 +182,7 @@
                 <tr>
                 <td>
                 <div class="img-container">
-                <img src="../assets/img/saint-laurent.jpg" alt="...">
+                <img src="https://demos.creative-tim.com/now-ui-dashboard-pro/assets/img/saint-laurent.jpg" alt="...">
                 </div>
                 </td>
                 <td class="td-name">
@@ -208,7 +208,7 @@
                 <tr>
                 <td>
                 <div class="img-container">
-                <img src="../assets/img/balmain.jpg" alt="...">
+                <img src="http://127.0.0.1:8000/images/produtos/d87f27c1530c6769e799aa1599d0c864.png" alt="...">
                 </div>
                 </td>
                 <td class="td-name">
