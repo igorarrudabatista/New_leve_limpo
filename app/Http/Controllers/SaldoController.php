@@ -95,15 +95,15 @@ class SaldoController extends Controller
      {
           $sal = Saldo::find($id);
 
+//https://pt.stackoverflow.com/questions/233677/update-com-soma-e-subtração-laravel
 
           $sal -> Observacoes              = $request->Observacoes;
           $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
           $sal -> valor_saldo              = $request->valor_saldo;
   
-          $sal ->save();          //$id->update($request->all());
-
-              // dd($id);    
-              return back()->withInput();
+          $sal ->save();        
+          
+          return back()->withInput();
 
      }
 
