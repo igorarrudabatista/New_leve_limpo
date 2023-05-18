@@ -113,46 +113,12 @@ class Empresa_ClienteController extends Controller
 }
 
 
-   //     $valor_saldo = $request->input('valor_saldo');
-     //   dd($recibo);
-     //   $Observacoes = $request->input('Observacoes');
-
-      // $recibo->saldo($valor_saldo);
-      //  $recibo->saldo()->attach(valor_saldo);
-
-        
-        // $products = $request->input('products', []);
-        // $quantities = $request->input('quantities', []);
-        // for ($product=0; $product < count($products); $product++) {
-        //     if ($products[$product] != '') {
-        //         $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-        //     }
-        // }
-
-
-
-
-
-
-
-    
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
 
     public function show(Empresa_Cliente $cliente)
     {
         return view('cliente.show',compact('cliente'));
     }
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function edit(Empresa_Cliente $cliente)
      {
         $titulo = $cliente->Nome_fantasia;

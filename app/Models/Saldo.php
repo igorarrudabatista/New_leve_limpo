@@ -12,6 +12,8 @@ class Saldo extends Model
     protected $fillable = [
         'valor_saldo', 'Observacoes', 'empresa_cliente_id', 
     ];
+     protected $primaryKey = 'empresa_cliente_id';
+
     protected $table = 'saldo';
 
     public function empresa_cliente(){

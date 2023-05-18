@@ -274,7 +274,9 @@
                               @endforeach
                               <!-- Button trigger modal -->
 {{-- {!! Form::open(['route' => 'saldo.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}                             --}}
-{!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!} 
+ {{-- {!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!}   --}}
+
+ {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.update', $cliente->id]]) !!} 
 
 
 <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
@@ -298,11 +300,13 @@
           <div class="row">
             <div class="col-md-5 pr-1">
               <div class="form-group">
-                <label>Valor</label>
+                <label class="text-danger"> <strong> Valor </strong></label>
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">
+                    <span class="input-group-text text-danger" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
+                    <?php $saldo->valor_saldo = 0 ;?>
+
                     <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
 
 
@@ -310,7 +314,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-md-6 pr-1">
+            <div class="col-md-7 pr-1">
               <div class="form-group">
                 <label>Descrição</label>
                 <div class="input-group">

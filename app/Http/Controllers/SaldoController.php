@@ -43,101 +43,70 @@ class SaldoController extends Controller
 //      *
 //      * @return \Illuminate\Http\Response
 //      */
+   public function index()
+   {
+     $clienteqtd  = Empresa_Cliente::count();
+
+     return view('cliente.index', ['cliente'=> $cliente, 
+     'search' => $search, 
+     'titulo' => $titulo, 
+     'clienteqtd' =>$clienteqtd,
+     'saldo' =>$saldo,
+   ]);
+    return view('cliente.create', []);
+
+   }
    public function create()
    {
 
-
-    //$clientes = Empresa_Cliente::all();
-
-
-    
-    
-    //dd($data);
-    return view('cliente.create', [
-                                  ]);
+    return view('cliente.create', []);
 
    }
 
 
     public function store(Request $request)
     {
-       // $cliente = Empresa_Cliente::get();
-
         $sal =  new Saldo;
         
-        $sal -> valor_saldo       = $request->valor_saldo;
-        $sal -> Observacoes       = $request->Observacoes;
+        $sal -> valor_saldo              = $request->valor_saldo;
+        $sal -> Observacoes              = $request->Observacoes;
         $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
 
         $sal ->save();
 
-      //  $a= Saldo::create($request->all());
-       // dd($sal);
-      
-    //$valor_saldo = $request->input('valor_saldo');
 
-      // $Observacoes = $request->input('Observacoes');
-
-      //  $recibo->saldo($valor_saldo);
-     //   $a->empresa_cliente()->attach($a);
-
-
- //      dd($a);
-
-      return view('/cliente.index', [
-                                    
-                                    
-                                    ]);
+        return back()->withInput();
     
-
      }
     
     public function show(Saldo $saldo)
     {
         return view('saldo.show',compact('saldo'));
     }
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function edit(Saldo $saldo)
      {
 
-         return view('saldo.edit',compact('saldo'));
+          
+         return view('cliente.index',compact('saldo'));
      }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-     public function update(Request $request, Saldo $saldo)
+
+     public function update(Request $request, $id)
      {
-    
-      //   $saldo->update($request->all());
+          $sal = Saldo::find($id);
 
-      $sal =  new Saldo;
-        
-      $sal -> valor_saldo       = $request->valor_saldo;
-      $sal -> Observacoes       = $request->Observacoes;
-      $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
 
-      $sal ->save();
-    
-         return redirect()->route('cliente.index')
-                         ->with('edit','Cliente Atualiazado com sucesso!');
+          $sal -> Observacoes              = $request->Observacoes;
+          $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
+          $sal -> valor_saldo              = $request->valor_saldo;
+  
+          $sal ->save();          //$id->update($request->all());
+
+              // dd($id);    
+              return back()->withInput();
+
      }
-    
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function destroy(Saldo $saldo)
      {
          $saldo->delete();
