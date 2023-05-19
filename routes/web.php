@@ -11,7 +11,7 @@ use App\Http\Controllers\
     HomeController, AlunosController, APIController, PainelGerencialController, FornecedorController,
     UsuariosController, RoleController, UserController, 
     PessoaController, Ficha_Conselho, CalendarController,
-    ObjetosController, SaldoController, SiteController
+    ObjetosController, SaldoController, SiteController, PedidosController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -40,6 +40,7 @@ Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 Route::resource('saldo',                     SaldoController::class);
+Route::resource('pedidos',                   PedidosController::class);
 
 
 

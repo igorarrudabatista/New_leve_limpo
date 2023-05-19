@@ -13,7 +13,7 @@ use App\Exports\ContratoExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-class ContratoController extends Controller
+class PedidosController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -38,7 +38,7 @@ class ContratoController extends Controller
         $titulo = 'Pedidos';
 
         $contrato = Contrato::with('empresa_cliente')->get();  
-
+        $produto = Produto::get();
         $empresa_cliente = Empresa_Cliente::get();
         $search = request('search');
 
@@ -54,6 +54,7 @@ class ContratoController extends Controller
                                      'empresa_cliente' => $empresa_cliente,
                                      'search'          => $search,
                                      'titulo'          => $titulo,
+                                     'produto'        => $produto,
                                     ]);
 
     }

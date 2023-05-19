@@ -57,6 +57,8 @@
               <div class="col-md-2 pl-1">
                 <div class="form-group">
                   <label>Em Estoque?</label>
+
+                  
                   <select name="Estoque_Produto" id="Estoque_Produto"
                   class="form-control">
                   <option value=""> Selecione </option>
@@ -64,9 +66,17 @@
                   <option value="Sim"> Sim </option>
               </select>                </div>
               </div>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+              </div>
+              
               <div class="col-md-2 pl-1">
                 <div class="form-group">
                   <label>Status do Produto</label>
+
+                  
                   <select id="Status_Produto" name="Status_Produto"
                   class="form-control">
                   <option value=""> Selecione </option>

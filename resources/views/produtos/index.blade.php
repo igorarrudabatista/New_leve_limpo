@@ -19,7 +19,7 @@
         <div class="col-auto">
           <br>
               <h1 class="app-page-title mb-0">PRODUTOS </h1> 
-              <p> <big>{{$produtoqtd}} </big> Produtos cadastrados</p> 
+              <p> <big> {{$produtoqtd}} </big> Produtos cadastrados</p> 
         </div>
 
 
@@ -116,151 +116,120 @@
 
     <div class="container">
       <div class="row">
-      <div class="card-body">
-    <div class="table-responsive">
-        <table class="table app-table-hover mb-0 text-left">
-              <thead>
-                  <tr>
-                    <th></th>
-                    <th class="cell">Status</th> 
-                    <th class="cell">Nome</th>
-                    <th class="cell">Categoria</th>
-                    <th class="cell">Em estoque?</th>
-                    <th class="cell">Quantidade</th>
-                    <th class="cell">Preço</th>
-                    <th class="cell">Ações</th>
-                    <th class="cell"></th>
-
-                  </tr>
-                </thead>
-                @foreach($produto as $produtos )
-                
-                <tbody>
-                  <td> 
-                
-                      <a href="{{asset('/produtos/edit/')}}/{{$produtos->id}}">
-                         <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" width="100px" > </a>
-                        <span></span>
-                      </td>
-
-                    <td class="cell">
-                      @switch($produtos)
-                          @case($produtos->Status_Produto == NULL)
-                          <span class="badge bg-warning">Não informado</span>
-                              @break
-                          @case($produtos->Status_Produto == 1)
-                          <span class="badge bg-success"><i class="now-ui-icons ui-1_check"></i>
- ATIVO </span>                                                     
-                              @break
-                          @case($produtos->Status_Produto == 0)
-                          <span class="badge bg-danger"><i class="now-ui-icons ui-1_simple-remove"></i>  INATIVO </span>       
-                      @endswitch                   
-                    </td>
-
-
-
-
-
-                    <td class="cell"> <b> {{$produtos->Nome_Produto}} </b></td>
-                    <td class="cell"><i>{{$produtos->Categoria_Produto}} </i></td>
-
-
-                    <td class="cell">
-                      @switch($produtos)
-                          @case($produtos->Estoque_Produto == NULL)
-                          <span class="badge bg-warning">Não informado</span>
-                              @break
-                          @case($produtos->Estoque_Produto == 'Sim')
-                          <span class="badge bg-success"><i class="now-ui-icons ui-1_check"></i>
- Em Estoque </span>                                                     
-                              @break
-                          @case($produtos->Estoque_Produto == 'Não')
-                          <span class="badge bg-danger"><i class="now-ui-icons ui-1_simple-remove"></i>  Fora de Estoque </span>       
-                      @endswitch                   
-                        
-                       
-
-                    </td>
-        
   
+  <div class="card">
 
+    <div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-shopping">
+    <thead class="">
+    <tr><th class="text-center">
+    </th>
+    <th><strong> Produto  </th>
+    <th> Ativo no site </th>
+    <th class="text-right"> Preço</th>
+    </tr>
+  
+  </thead>
+    @foreach($produto as $produtos)
 
+    <tbody>
+    <tr><td>
+      <div class="img-container">
+        <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" alt="...">
+      </div>
+    </td>
 
-
-
-
-                    <td class="cell">
-                    @if ($produtos->Quantidade_Produto == '')
-                       <span class="badge bg-warning"> Quantidade não lançado </span>
-                    @elseif  ($produtos->Preco_Produto !== '')
-                           <big> <span class="badge bg-info"> {{$produtos->Quantidade_Produto }}</span> </big>
-                    @endif
-                    </td>
-                    
-                    <td class="cell" >
-                    
-                    @if ($produtos->Preco_Produto == '')
-                       <span class="badge bg-danger"> Valor não lançado </span>
-                    @elseif  ($produtos->Preco_Produto != '')
-                    <big>   <span class="badge bg-success"> {{"R$ " . number_format($produtos->Preco_Produto, 2, ",", ".")  }} </span> </big>
-
-                    @endif
-                    </td>
-
-                      <!-- Butão de deletar -->
-                      <td>     
-                        <a class="btn btn-warning" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal{{ $produtos->id }}" data-id="{{ $produtos->id }}">
-                       <big> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.82907 7.48718H18.6325V20.1197C18.6325 21.2242 17.7371 22.1197 16.6325 22.1197H7.82907C6.7245 22.1197 5.82907 21.2242 5.82907 20.1197V7.48718Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 4.74353L20.4615 4.74353" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M14.9134 2H9.54816L8.57266 4.74359H15.8889L14.9134 2Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="12.3163" y1="11.2307" x2="12.3163" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="9.57266" y1="11.2307" x2="9.57266" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="15.0598" y1="11.2307" x2="15.0598" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{ $produtos->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"> Você tem certeza que deseja deletar ?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" width="100px" > </a> <br>
-                              <b> ID do Produto: </b> <big> {{ $produtos->id }} </big> <br> 
-                              <b> Nome do Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
+    <td class="td-name">
+      <a href="{{ route('produtos.edit',$produtos->id) }}">{{$produtos->Nome_Produto}} </a>
+    <br>
+      <small>{{"Categoria: " .$produtos->Categoria_Produto ?? 'Categoria não informada'}} 
+    <br>
+      @if ($produtos->Quantidade_Produto == '')
+        <span class="badge bg-warning"> Quantidade não informada </span>
+      @elseif  ($produtos->Preco_Produto !== '')
+        <span class="badge bg-info"> {{"Qtd. " .$produtos->Quantidade_Produto }}</span> 
+      @endif          
+      </small>
+    </td>
+    <td>
+      @switch($produtos)
+      @case($produtos->Status_Produto == NULL)
+      <span class="badge bg-warning">Não informado</span>
+          @break
+      @case($produtos->Status_Produto == 1)
+      <span class="badge bg-success"><i class="now-ui-icons ui-1_check"></i>
+        Sim </span>                                                     
+          @break
+      @case($produtos->Status_Produto == 0)
+      <span class="badge bg-danger"><i class="now-ui-icons ui-1_simple-remove"></i>  Não</span>       
+  @endswitch             
+    </td>
  
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        
-                                {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
+    <td class="td-number">
+     
+        @if ($produtos->Preco_Produto == '')
+      <span class="badge text-danger">  <small> Valor não lançado </span>
+   @elseif  ($produtos->Preco_Produto != '')
+      <span class="badge text-success"> {{"R$ " . number_format($produtos->Preco_Produto, 2, ",", ".")  }} </span> 
 
-                                {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+   @endif
+    </td>
+   
+       <!-- Butão de deletar -->
+
+       <td class="td-number">
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal{{ $produtos->id }}" data-id="{{ $produtos->id }}">
+       <big> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.82907 7.48718H18.6325V20.1197C18.6325 21.2242 17.7371 22.1197 16.6325 22.1197H7.82907C6.7245 22.1197 5.82907 21.2242 5.82907 20.1197V7.48718Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 4.74353L20.4615 4.74353" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M14.9134 2H9.54816L8.57266 4.74359H15.8889L14.9134 2Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="12.3163" y1="11.2307" x2="12.3163" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="9.57266" y1="11.2307" x2="9.57266" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <line x1="15.0598" y1="11.2307" x2="15.0598" y2="18.376" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+        </button>
         
-                                {!! Form::close() !!}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                                                   {{-- <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>  --}}
-                                                                   
-                                                 
-                         </td>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal{{ $produtos->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Você tem certeza que deseja deletar ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" width="100px" > </a> <br>
+              <b> ID do Produto: </b> <big> {{ $produtos->id }} </big> <br> 
+              <b> Nome do Produto: </b> <big> {{$produtos->Nome_Produto ?? 'Sem registros'  }} </big> <br> 
 
-                         
-                         
-                         
-                         
-                         
-                        </form>
-                      </tr>
-                      
-                      
-                      @endforeach
-                    </tbody>
-                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        
+                {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
+
+                {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+
+                {!! Form::close() !!}
+              </div>
+            </div>
+          </div>
+        </div>
+                                   {{-- <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>  --}}
+                                                   
+                                 
+         </td>
+
+         
+
+    </tr>
+
+    @endforeach
+
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+    {{-- https://demos.creative-tim.com/now-ui-dashboard-pro/examples/components/grid.html --}}
+  
                 </div><!--//table-responsive-->
               </div><!--//app-card-body-->	
               
