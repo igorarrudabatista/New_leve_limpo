@@ -261,7 +261,7 @@
 
                                 @endforeach
                  
-                            <h1 class="text-danger">
+                            {{-- <h1 class="text-danger">
                               <strong> -   R$ 10,00 </strong> </h1>
                             Ver Extrato:<br>  
 
@@ -271,12 +271,11 @@
                                 
                             
 
-                              @endforeach
+                              @endforeach --}}
                               <!-- Button trigger modal -->
 {{-- {!! Form::open(['route' => 'saldo.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}                             --}}
  {{-- {!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!}   --}}
 
- {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.update', $cliente->id]]) !!} 
 
 
 <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
@@ -284,12 +283,14 @@
 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
  Adicionar
   </button>
-  
+
   <!-- Modal 1 -->
   <div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
+        {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.incremento', $cliente->id]]) !!} 
         <div class="modal-header">
+
           <h5 class="modal-title" id="exampleModalLongTitle">Adicionar valor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -305,7 +306,6 @@
                     <span class="input-group-text text-danger" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
-                    <?php $saldo->valor_saldo = 0 ;?>
 
                     <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
 
@@ -331,11 +331,13 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
           <button type="submit" class="btn btn-success">Adicionar valor</button>
+          {!! Form::close() !!}
+
         </div>
       </div>
     </div>
   </div>
-  
+
   <!-- Modal 2 -->
   <button type="button" class="btn btn-secondary btn-sm btn-danger" data-toggle="modal" data-target="#subtrair_valor">
       Subtrair
@@ -344,6 +346,7 @@
     <div class="modal fade" id="subtrair_valor" tabindex="-1" role="dialog" aria-labelledby="subtrair_valorTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
+            {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.decremento', $cliente->id]]) !!} 
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">Subtrair valor</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -352,32 +355,41 @@
             </div>
             <div class="modal-body">
     
-          <div class="row">
+           <div class="row">
             <div class="col-md-5 pr-1">
               <div class="form-group">
-                <label class="text-danger">
-                  Valor</label>
+                <label class="text-danger"> <strong> Valor </strong></label>
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">
+                    <span class="input-group-text text-danger" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
-                  </div>                            </div>
+
+                    <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
+
+
+                     <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
+                  </div>
+                </div>
             </div>
-            <div class="col-md-6 pr-1">
+            <div class="col-md-7 pr-1">
               <div class="form-group">
                 <label>Descrição</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">
                       <i class="now-ui-icons text_align-left"></i>
                     </span> 
+                    {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
                   </div>
                 </div>
             </div>
-          </div>    
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-danger">Subtrair valor</button>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-success">Adicionar valor</button>
+          {!! Form::close() !!}
+
             </div>
           </div>
         </div>
@@ -394,13 +406,35 @@
 </div> </div>
 
 <div class="card card-usser">
-  <div class="image">
-    </div>
-  <div class="card-bodsy">
+  <div class="card-body">
+    <div class="text-center mb-5">
+<br>
+      <h6> <strong> Histórico da conta </strong></h6>
+        <h6 class="text-danger">
 
 
-    <div class="text-left mb-5">
-      <h6> <strong> Conta </strong></h6>
+
+                            <table class="table app-table-hover mb-20 text-left">
+                            <thead>
+                              <tr>
+                                <th class="cell">
+                                  <i class="now-ui-icons business_money-coins">
+                                    <th class="cell">Data</th>
+                                    </i>Saldo</th>
+            
+                              </tr>
+                            </thead>
+
+                            @foreach ($historico_conta as $clientes_saldo) 
+
+                            <tbody>
+                              <tr>
+                                <td class="cell"> {{$clientes_saldo->updated_at}} </td>
+
+                                <td class="cell text-success"> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}}
+                                <p class="text-primary"> <small> Obs. {{$clientes_saldo->hist_Observacoes}} </small>  </td>
+
+                            @endforeach
 
     
   </div>

@@ -39,8 +39,10 @@ Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
-Route::resource('saldo',                     SaldoController::class);
+// Route::resource('saldo',                     SaldoController::class);
 Route::resource('pedidos',                   PedidosController::class);
+Route::patch('/saldo/incremento' , [SaldoController::class, 'incremento'])->name('saldo.incremento');
+Route::patch('/saldo/decremento' , [SaldoController::class, 'decremento'])->name('saldo.decremento');
 
 
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Http;
 
 use App\Models\Empresa_Cliente;
 use App\Models\Saldo;
+use App\Models\Hist_Saldo;
 
 
 use App\Exports\Empresa_ClienteExport;
@@ -19,30 +20,15 @@ use Maatwebsite\Excel\Facades\Excel;
 class SaldoController extends Controller
 {
 
-      /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     function __construct()
     {
          $this->middleware('permission:saldo-list|saldo-create|saldo-edit|saldo-delete', ['only' => ['index','show']]);
          $this->middleware('permission:saldo-create', ['only' => ['create','store']]);
-         $this->middleware('permission:saldo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:saldo-edit',   ['only' => ['edit','update','incremento']]);
          $this->middleware('permission:saldo-delete', ['only' => ['destroy']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    
-//     /**
-//      * Show the form for creating a new resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
    public function index()
    {
      $clienteqtd  = Empresa_Cliente::count();
@@ -93,28 +79,66 @@ class SaldoController extends Controller
          return view('cliente.index',compact('saldo'));
      }
 
-     public function update(Request $request, $id)
+     public function incremento(Request $request, Saldo $saldo, Hist_Saldo $historico)
      {
-        $saldo_inicial  = Saldo::get();
-        $adicao = $request->valor_saldo + $saldo_inicial;
+
+ //https://pt.stackoverflow.com/questions/233677/update-com-soma-e-subtração-laravel
+
+           $saldo -> Observacoes              = $request->Observacoes;
+           $saldo -> empresa_cliente_id       = $request->empresa_cliente_id;
+           $saldo  = Saldo::where
+           ('empresa_cliente_id', $request->empresa_cliente_id)->increment('valor_saldo', $request->valor_saldo);
+           //-------------//
+
+           $historico =  new Hist_Saldo;
+           $historico -> hist_valor_saldo              = $request->valor_saldo;
+           $historico -> hist_Observacoes              = $request->hist_Observacoes;
+           $historico -> empresa_cliente_id            = $request->empresa_cliente_id;
+           $historico ->save();
+
+           return back()->withInput();
+
   
-        $sal = Saldo::find($id);
-
-//https://pt.stackoverflow.com/questions/233677/update-com-soma-e-subtração-laravel
-
-          $sal -> Observacoes              = $request->Observacoes;
-          $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
-          $sal -> valor_saldo              = $request->valor_saldo;
+     }
   
+     public function decremento(Request $request, Saldo $saldo, Hist_Saldo $historico)
+     {
+         $saldo -> Observacoes              = $request->Observacoes;
+         $saldo -> empresa_cliente_id       = $request->empresa_cliente_id;         
+         $saldo  = Saldo::where
+         ('empresa_cliente_id', $request->empresa_cliente_id)->decrement('valor_saldo', $request->valor_saldo);
+         
+           //-------------//
+
+         $historico =  new Hist_Saldo;  
+         $historico -> hist_valor_saldo              = $request->valor_saldo;
+         $historico -> hist_Observacoes              = $request->hist_Observacoes;
+         $historico -> empresa_cliente_id            = $request->empresa_cliente_id;
+         $historico ->save();
+
+
+        //  $historico -> hist_Observacoes              = $request->hist_Observacoes;
+        //  $historico -> empresa_cliente_id            = $request->empresa_cliente_id;
+        //  $historico  = Hist_Saldo::where
+        //  ('empresa_cliente_id', $request->empresa_cliente_id)->decrement('hist_valor_saldo', $request->valor_saldo);
 
 
 
 
-          $sal ->save();        
-          
-          return back()->withInput();
+         // $historico = Hist_Saldo::put();
+          // $saldo -> $historico -> save();
+
+
+
+
+           return back()->withInput();
+     }
+
+     public function update(Saldo $saldo)
+     {
 
      }
+    
 
      public function destroy(Saldo $saldo)
      {

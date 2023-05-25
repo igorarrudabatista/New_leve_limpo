@@ -64,6 +64,8 @@
 <div class="main-modal">
   <div class="modal-left">
     <div class="modal-image-wrapper">
+      <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
+
       <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}">
     </div>
     <div class="modal-info-header">

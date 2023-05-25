@@ -8,6 +8,7 @@ use App\Models\Saldo;
 
 
 use App\Exports\Empresa_ClienteExport;
+use App\Models\Hist_Saldo;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Facades\Excel;
@@ -127,10 +128,12 @@ class Empresa_ClienteController extends Controller
         $saldo = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->get();
         //$saldo = Saldo::with('empresa_cliente')->get();
         $clientes = Empresa_Cliente::get();
+
+        $historico_conta = Hist_Saldo::get();
        // $clientex = Empresa_Cliente::with('valor_saldo', 'empresa_cliente_id')->get();
         //$saldo = Saldo::where('empresa_cliente_id', '=', $cliente);
 
-         return view('cliente.edit',compact('cliente', 'titulo', 'clientes', 'saldo_historico', 'saldo',));
+         return view('cliente.edit',compact('cliente', 'titulo', 'clientes', 'saldo_historico', 'saldo','historico_conta'));
      }
 
 
