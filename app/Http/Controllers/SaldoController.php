@@ -52,19 +52,14 @@ class SaldoController extends Controller
 
     public function store(Request $request)
     {
-
-
         $sal =  new Saldo;
-        
         $sal -> valor_saldo              = $request->valor_saldo;
         $sal -> Observacoes              = $request->Observacoes;
-        $sal -> empresa_cliente_id       = $request->empresa_cliente_id;
-
+        $sal -> empresa_cliente_id       = $request->id;
         $sal ->save();
 
-
         return back()->withInput();
-    
+        
      }
     
     public function show(Saldo $saldo)
@@ -115,20 +110,6 @@ class SaldoController extends Controller
          $historico -> hist_Observacoes              = $request->hist_Observacoes;
          $historico -> empresa_cliente_id            = $request->empresa_cliente_id;
          $historico ->save();
-
-
-        //  $historico -> hist_Observacoes              = $request->hist_Observacoes;
-        //  $historico -> empresa_cliente_id            = $request->empresa_cliente_id;
-        //  $historico  = Hist_Saldo::where
-        //  ('empresa_cliente_id', $request->empresa_cliente_id)->decrement('hist_valor_saldo', $request->valor_saldo);
-
-
-
-
-         // $historico = Hist_Saldo::put();
-          // $saldo -> $historico -> save();
-
-
 
 
            return back()->withInput();

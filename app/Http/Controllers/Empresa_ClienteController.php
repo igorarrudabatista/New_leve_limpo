@@ -95,20 +95,23 @@ class Empresa_ClienteController extends Controller
    }
 
 
-
-    
-
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
     public function store(Request $request)
     {
-      // Empresa_Cliente::create($request->all());
+
+  //     $cliente =  new Empresa_Cliente;
+
+    //   $cliente -> cnpj          = $request->cnpj;
+
+    //   dd($cliente);
         
-    Empresa_Cliente::create($request->all());
+   Empresa_Cliente::create($request->all());
+
+        $saldo =  new Saldo;  
+        $saldo -> valor_saldo              = '0';
+        $saldo -> Observacoes              = '';
+        $saldo -> empresa_cliente_id       = '1';
+        $saldo ->save();
+
     return redirect()->route('cliente.index')
     ->with('success','Cliente criado com sucesso!');
 }

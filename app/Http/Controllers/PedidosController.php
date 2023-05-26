@@ -7,6 +7,7 @@ use App\Models\Recibo;
 use App\Models\Contrato;
 use App\Models\MinhaEmpresa;
 use App\Models\Produto;
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use App\Exports\ContratoExport;
@@ -37,8 +38,10 @@ class PedidosController extends Controller
 
         $titulo = 'Pedidos';
 
-        $contrato = Contrato::with('empresa_cliente')->get();  
+        $pedidos = Pedidos::with('empresa_cliente')->get();  
         $produto = Produto::get();
+        $produtoqtd  = Produto::count();
+
         $empresa_cliente = Empresa_Cliente::get();
         $search = request('search');
 
@@ -50,15 +53,16 @@ class PedidosController extends Controller
             }
 
         return view('pedidos.index', [
-                                     'contrato'        => $contrato, 
+                                     'pedidos'        => $pedidos, 
                                      'empresa_cliente' => $empresa_cliente,
                                      'search'          => $search,
                                      'titulo'          => $titulo,
                                      'produto'        => $produto,
+                                     'produtoqtd'     => $produtoqtd
                                     ]);
-
     }
     
+
 
     public function create() {
         

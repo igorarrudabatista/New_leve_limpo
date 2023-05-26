@@ -212,11 +212,6 @@
                                   </div>
                             </div>
                             </div>
-             
-               
-
-
-
                           </div>
 <hr>
                           <button type="submit"
@@ -242,9 +237,81 @@
                           <img class="avatar border-gray" src="{{ asset('/images/cart.png') }}" alt="...">
                         </a>
                       </div>
+       
+                      <div class="text-right ">
+                    
+
+                     
+                        
+
+
+                             <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#extratomodal">
+                                <i class="now-ui-icons files_paper"> Extrato
+                            </i>  
+                            </button>
+                            
                       
-                      <div class="text-left mb-5">
-                        <h6> <strong> Conta </strong></h6>
+
+                          <!-- Modal Extrato -->
+
+  <div class="modal fade" id="extratomodal" tabindex="-1" role="dialog" aria-labelledby="extratomodalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="card card-usser">
+              <div class="card-body">
+                <div class="text-center mb-5">
+            <br>
+                  <h6> <strong> Histórico da conta </strong></h6>
+                    <h6 class="text-danger">
+            <table class="table app-table-hover mb-20 text-left">
+              <thead>
+                <tr>
+                  <th class="cell ">Data</th>
+                  <th class="cell text-right">Saldo
+                    <i class="now-ui-icons business_money-coins">
+                      </i>
+                    </th>
+
+                </tr>
+              </thead>
+            @foreach ($historico_conta as $clientes_saldo) 
+
+            <tbody>
+              <tr>
+                
+                <td><p class="text-primary"> {{($clientes_saldo->updated_at)->format('d/m/Y')}} </td>
+<?php $valor1 = '0' ?>
+<?php $valor2 = '0' ?>
+                  @if ($clientes_saldo > $valor1)
+                <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+                  @elseif ($clientes_saldo < $valor2)
+                  <td class="cell text-danger text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+                    @endif       
+
+                  <p class="text-primary"> <small> Obs. {{$clientes_saldo->hist_Observacoes}} </small>  </td>
+                    @endforeach
+              </tr>
+            </tbody>
+          </table>
+              
+  </div>
+
+
+
+</div>
+</div>    
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{-- Fim Modal Extrato --}}
                         
                         
                         <div class="text-center mb-5">
@@ -256,33 +323,15 @@
                                   {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
                                 </strong>
                               </h1>
-                                
-                            
+                                @endforeach                                      
 
-                                @endforeach
-                 
-                            {{-- <h1 class="text-danger">
-                              <strong> -   R$ 10,00 </strong> </h1>
-                            Ver Extrato:<br>  
-
-                              @foreach ($saldo_historico as $clientes_saldo)
-
-                              <strong> R$ {{$clientes_saldo->valor_saldo}} </strong> </h1>
-                                
-                            
-
-                              @endforeach --}}
-                              <!-- Button trigger modal -->
-{{-- {!! Form::open(['route' => 'saldo.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}                             --}}
- {{-- {!! Form::open(array('route' => 'saldo.store','method'=>'POST')) !!}   --}}
-
-
+<br>
 
 <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
 
-<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
- Adicionar
-  </button>
+ <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
+  Adicionar
+  </button> 
 
   <!-- Modal 1 -->
   <div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
@@ -290,24 +339,25 @@
       <div class="modal-content">
         {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.incremento', $cliente->id]]) !!} 
         <div class="modal-header">
+          <div class="image">
+            <img src="" alt="...">
+        </div>
 
-          <h5 class="modal-title" id="exampleModalLongTitle">Adicionar valor</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
 
           <div class="row">
             <div class="col-md-5 pr-1">
               <div class="form-group">
-                <label class="text-danger"> <strong> Valor </strong></label>
+                <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
+
+                <label class="text-success"> <strong> Adicionar Valor </strong></label>
                 <div class="input-group">
-                    <span class="input-group-text text-danger" id="basic-addon1">
+                    <span class="input-group-text text-success" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
 
-                    <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
+                    <input type="text" class="form-control text-success" id="valor_saldo" name="valor_saldo" data-mask="000000" > 
 
 
                      <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
@@ -330,7 +380,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-success">Adicionar valor</button>
+          <button type="submit" class="btn btn-success"> <i class="now-ui-icons ui-1_simple-add"> 
+          </i>  Adicionar valor</button>
           {!! Form::close() !!}
 
         </div>
@@ -348,23 +399,23 @@
           <div class="modal-content">
             {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.decremento', $cliente->id]]) !!} 
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Subtrair valor</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div class="image">
+                <img src="" alt="...">
+            </div>
+    
             </div>
             <div class="modal-body">
     
            <div class="row">
             <div class="col-md-5 pr-1">
               <div class="form-group">
-                <label class="text-danger"> <strong> Valor </strong></label>
+                <label class="text-danger"> <strong> Subtrair valor </strong></label>
                 <div class="input-group">
                     <span class="input-group-text text-danger" id="basic-addon1">
                       <i class="now-ui-icons business_money-coins"> R$ </i> 
                     </span>
 
-                    <input type="text" class="form-control" id="valor_saldo" name="valor_saldo" > 
+                    <input type="text" class="form-control text-danger" id="valor_saldo" name="valor_saldo" data-mask="000000"  > 
 
 
                      <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
@@ -387,7 +438,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-success">Adicionar valor</button>
+          <button type="submit" class="btn btn-danger"> <i class="now-ui-icons ui-1_simple-delete">  Subtrair valor </i> </button>
+
           {!! Form::close() !!}
 
             </div>
@@ -409,32 +461,41 @@
   <div class="card-body">
     <div class="text-center mb-5">
 <br>
-      <h6> <strong> Histórico da conta </strong></h6>
+      <h6> <strong> Pedidos do Cliente </strong></h6>
         <h6 class="text-danger">
 
+          <img src="https://yt3.googleusercontent.com/ytc/AL5GRJXK0p5pOrvNoBR4merZH7Y3rM1inYfOIY5tjvA3=s900-c-k-c0x00ffffff-no-rj" width="120px">
 
+          <table class="table app-table-hover mb-20 text-left">
+            <thead>
+              <tr>
+                <th class="cell ">Data</th>
+                <th class="cell text-right">Saldo
+                  <i class="now-ui-icons business_money-coins">
+                    </i>
+                  </th>
 
-                            <table class="table app-table-hover mb-20 text-left">
-                            <thead>
-                              <tr>
-                                <th class="cell">
-                                  <i class="now-ui-icons business_money-coins">
-                                    <th class="cell">Data</th>
-                                    </i>Saldo</th>
-            
-                              </tr>
-                            </thead>
+              </tr>
+            </thead>
+          @foreach ($historico_conta as $clientes_saldo) 
 
-                            @foreach ($historico_conta as $clientes_saldo) 
+          <tbody>
+            <tr>
+              
+              <td><p class="text-primary"> {{($clientes_saldo->updated_at)->format('d/m/Y')}} </td>
+<?php $valor1 = '0' ?>
+<?php $valor2 = '0' ?>
+                @if ($clientes_saldo > $valor1)
+              <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+                @elseif ($clientes_saldo < $valor2)
+                <td class="cell text-danger text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+                  @endif       
 
-                            <tbody>
-                              <tr>
-                                <td class="cell"> {{$clientes_saldo->updated_at}} </td>
-
-                                <td class="cell text-success"> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}}
-                                <p class="text-primary"> <small> Obs. {{$clientes_saldo->hist_Observacoes}} </small>  </td>
-
-                            @endforeach
+                <p class="text-primary"> <small> Obs. {{$clientes_saldo->hist_Observacoes}} </small>  </td>
+                  @endforeach
+            </tr>
+          </tbody>
+        </table>
 
     
   </div>

@@ -58,15 +58,14 @@
   </div>
 </section>
 </div>
-@foreach($produtos as $Produto)
 
 <div id="modal-window" class="shadow">
-<div class="main-modal">
-  <div class="modal-left">
-    <div class="modal-image-wrapper">
-      <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
+  <div class="main-modal">
+    <div class="modal-left">
+      <div class="modal-image-wrapper">
+        @foreach($produtos as $Produto)
+        <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
 
-      <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}">
     </div>
     <div class="modal-info-header">
       <div class="left-side">
@@ -134,20 +133,18 @@
       <a href="#">Ver todos</a>
     </div>
     
-    @foreach($produtos as $Produto )
     <div class="card-wrapper">
       <div class="card">
         <div class="profile-info-wrapper">
           <div class="profile-img-wrapper">
             <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
           </div>
-          <p>{{$Produto->name ?? 'Produ não encontrado' }} </p>
+          <p> </p>
         </div>
-        <p> {{$Produto->name ?? 'Não encontrado' }}</p>
+        <p> </p>
       </div>
     </div>
     
-    @endforeach
     
     
   </div>
