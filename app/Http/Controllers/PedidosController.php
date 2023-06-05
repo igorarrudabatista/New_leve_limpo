@@ -66,11 +66,32 @@ class PedidosController extends Controller
 
     public function create() {
         
+        $produtos = Produto::get();
+        $ultimos_produtos = Produto::orderBy('id', 'DESC')->limit(8)->get();
+
+
         $titulo = 'Pedidos';
         $produto         = Produto::orderBy('id','asc')->get();
         $empresa_cliente = Empresa_Cliente::orderBy('id', 'asc')->get();
 
-        return view('pedidos.create', compact('empresa_cliente','produto', 'titulo'));
+        $search = request('search');
+
+        if($search) {
+            $produtos = Produto::where ([['Nome_Produto', 'like', '%'.$search. '%' ]])->get();
+
+             } else {
+                $produtos = Produto::all();
+            }
+
+        return view('pedidos.create', compact('empresa_cliente',
+                                              'produto',
+                                              'titulo',
+                                              'produtos',
+                                              'ultimos_produtos',
+                                              'search'
+                                            ));
+
+                                            
     }
     
     /**
