@@ -16,7 +16,7 @@ class Recibo extends Model
         'empresa_cliente_id', 'DataEntrega', 'DataRetirada', 'Descrição', 'MensagemCliente',
         'Observacoes', 'Taxa', 'Desconto'
     ];
-    protected $table = 'Recibo';
+    protected $table = 'recibo';
     public $timestamps = false;
 
 
