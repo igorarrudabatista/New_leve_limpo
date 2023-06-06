@@ -78,12 +78,12 @@
                 <p>Painel </p>
               </a>
             </li>
-            <li class="{{ (request()->is('vender')) ? 'active' : '' }}">  
+            {{-- <li class="{{ (request()->is('vender')) ? 'active' : '' }}">  
               <a href="{{ asset('/vender') }}">
                 <i class="now-ui-icons design_app"></i>
                 <p>VENDER </p>
               </a>
-            </li>
+            </li> --}}
             
             <li class="{{ (request()->is('calendar/index')) ? 'active' : '' }}">  
               <a href="{{ asset('/calendar/index') }}">
@@ -94,29 +94,29 @@
 
             <li class="{{ (request()->is('minhaempresa')) ? 'active' : '' }}">  
               <a href="{{ asset('/minhaempresa') }}">
-                <i class="now-ui-icons shopping_cart"></i>
+                <i class="now-ui-icons business_badge"></i>
                 <p>Minha Empresa</p>
               </a>
             </li>
 
-            <li class="{{ (request()->is('pedidos')) ? 'active' : '' }}">  
+            {{-- <li class="{{ (request()->is('pedidos')) ? 'active' : '' }}">  
               <a href="{{ asset('/pedidos') }}">
                 <i class="now-ui-icosns ">2</i>
                 <p>PEDIDOS </p>
               </a>
-            </li>
+            </li> --}}
 
             <li class="{{ (request()->is('cliente')) ? 'active' : '' }}">  
 
               <a href="{{ asset('/cliente') }}">
-                <i class="now-ui-icons business_badge"></i>
+                <i class="now-ui-icons users_single-02"></i>
                 <p>Cliente</p>
               </a>
             </li>
 
             <li class="{{ (request()->is('fornecedor')) ? 'active' : '' }}">  
               <a href="{{ asset('/fornecedor') }}">
-                <i class="now-ui-icons users_single-02"></i>
+                <i class="now-ui-icons business_briefcase-24"></i>
                 <p>Fornecedor</p>
               </a>
             </li>
@@ -144,7 +144,7 @@
    
             <li class="{{ (request()->is('users')) ? 'active' : '' }}">  
               <a href="{{ asset('/users') }}">
-                <i class="now-ui-icons users_single-02"></i>
+                <i class="now-ui-icons users_circle-08"></i>
                 <p>Usuários</p>
               </a>
             </li>
@@ -194,7 +194,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
 
               <ul class="navbar-nav">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="nav-link" href="/Site">
                     <i class="now-ui-icons media-2_sound-wave"></i>
                     <p>
@@ -225,7 +225,7 @@
                       <span class="d-lg-none d-md-block">Stats</span>
                     </p>
                   </a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="now-ui-icons users_single-02"></i>

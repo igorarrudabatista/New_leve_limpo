@@ -94,7 +94,7 @@
   </div>
 
     <div class="col-md-6 mb-4">
-      <div class="upload">
+      {{-- <div class="upload">
         <input type="file" title="" id="image" name="image"  class="drop-here">
         <div class="text text-drop">Imagem</div>
         <div class="text text-upload">Enviando</div>
@@ -105,7 +105,7 @@
           <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <div class="shadow"></div>
-      </div>     
+      </div>      --}}
 
 
 

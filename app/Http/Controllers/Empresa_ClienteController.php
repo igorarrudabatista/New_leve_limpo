@@ -45,7 +45,7 @@ class Empresa_ClienteController extends Controller
         $saldo = Saldo::with('empresa_cliente')->get();  
         $titulo = 'Clientes';
         $cliente = Empresa_Cliente::all();
-
+//dd($saldo);
         $search = request('search');
 
         if($search) {
@@ -125,13 +125,14 @@ class Empresa_ClienteController extends Controller
 
      public function edit(Empresa_Cliente $cliente)
      {
-        $titulo = $cliente->Nome_fantasia;
+        $titulo =  $cliente->Nome_fantasia;
        // $titulo = 'Cliente';
         $saldo_historico = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->orderBy('valor_saldo', 'DESC')->get();
         $saldo = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->get();
+        
         //$saldo = Saldo::with('empresa_cliente')->get();
+       
         $clientes = Empresa_Cliente::get();
-
         $historico_conta = Hist_Saldo::get();
        // $clientex = Empresa_Cliente::with('valor_saldo', 'empresa_cliente_id')->get();
         //$saldo = Saldo::where('empresa_cliente_id', '=', $cliente);

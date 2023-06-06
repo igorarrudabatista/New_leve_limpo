@@ -134,11 +134,12 @@
                       <td>
                         {{-- {{ ?? 'Não encontrado'}} --}}
 
-                        <big><span class="text-danger">R$ 10,00  </span> </big>
-                        <big><span class="text-success">R$ 10,00  </span> </big>
+                        <big><span class="text-success"> 
+                          {{"R$ " . ($empresa_clientes->valor_saldo). " Não informado "  }}
+                        </span> </big>
                     
                       </td>
-   <!-- Butão de deletar -->
+   <!-- Botão de deletar -->
    <td>     
     <a class="btn btn-warning text-light" href="{{ route('cliente.edit',$empresa_clientes->id) }}">Editar</a>
    </td>
