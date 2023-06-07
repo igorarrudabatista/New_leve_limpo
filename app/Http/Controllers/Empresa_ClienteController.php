@@ -130,6 +130,7 @@ class Empresa_ClienteController extends Controller
         $saldo_historico = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->orderBy('valor_saldo', 'DESC')->get();
         $saldo = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->get();
         
+        
         //$saldo = Saldo::with('empresa_cliente')->get();
        
         $clientes = Empresa_Cliente::get();

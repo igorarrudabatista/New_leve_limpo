@@ -314,6 +314,16 @@
     {{-- Fim Modal Extrato --}}
                         
                         
+
+    @if ($saldo != $cliente)
+        <span class="badge text-success btn">  Caso 1 ok </span>
+
+    @elseif  ($saldo == $cliente)
+        <span class="badge text-success"> Caso 2 de algo  </span> 
+    @endif        
+
+
+
                         <div class="text-center mb-5">
                           <h5> <strong> Saldo Atual </strong></h5>
                               @foreach ($saldo as $clientes_saldo)
