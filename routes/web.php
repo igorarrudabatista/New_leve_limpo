@@ -43,6 +43,7 @@ Route::resource('orcamento',                 OrcamentoController::class);
 Route::resource('pedidos',                   PedidosController::class);
 Route::patch('/saldo/incremento' , [SaldoController::class, 'incremento'])->name('saldo.incremento');
 Route::patch('/saldo/decremento' , [SaldoController::class, 'decremento'])->name('saldo.decremento');
+Route::post('/saldo/add' ,        [SaldoController::class, 'add'])       ->name('saldo.add');
 
 
 

@@ -52,11 +52,20 @@ class SaldoController extends Controller
 
     public function store(Request $request)
     {
-        $sal =  new Saldo;
-        $sal -> valor_saldo              = $request->valor_saldo;
-        $sal -> Observacoes              = $request->Observacoes;
-        $sal -> empresa_cliente_id       = $request->id;
-        $sal ->save();
+
+
+      $saldo =  new Saldo;  
+      $saldo -> valor_saldo              = '0';
+      $saldo -> Observacoes              = '';
+      $saldo -> empresa_cliente_id       = $request->id;
+      $saldo ->save();
+
+
+        // $sal =  new Saldo;
+        // $sal -> valor_saldo              = $request->valor_saldo;
+        // $sal -> Observacoes              = $request->Observacoes;
+        // $sal -> empresa_cliente_id       = $request->id;
+        // $sal ->save();
 
         return back()->withInput();
         
@@ -113,6 +122,18 @@ class SaldoController extends Controller
 
 
            return back()->withInput();
+     }
+     public function add(Request $request, Saldo $saldo, Hist_Saldo $historico)
+     {
+      $saldo =  new Saldo;  
+      $saldo -> valor_saldo              = '0';
+      $saldo -> Observacoes              = '';
+      $saldo -> empresa_cliente_id    =    $request->empresa_cliente_id; 
+      $saldo ->save();
+
+      return back()->withInput();
+
+
      }
 
      public function update(Saldo $saldo)

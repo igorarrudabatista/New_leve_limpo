@@ -239,11 +239,6 @@
                       </div>
        
                       <div class="text-right ">
-                    
-
-                     
-                        
-
 
                              <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#extratomodal">
                                 <i class="now-ui-icons files_paper"> Extrato
@@ -275,12 +270,15 @@
 
                 </tr>
               </thead>
-            @foreach ($historico_conta as $clientes_saldo) 
+            @foreach ($saldo_historico as $clientes_saldo) 
 
             <tbody>
               <tr>
                 
                 <td><p class="text-primary"> {{($clientes_saldo->updated_at)->format('d/m/Y')}} </td>
+
+                  <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+
 <?php $valor1 = '0' ?>
 <?php $valor2 = '0' ?>
                   @if ($clientes_saldo > $valor1)
@@ -315,153 +313,176 @@
                         
                         
 
-    @if ($saldo != $cliente)
-        <span class="badge text-success btn">  Caso 1 ok </span>
-
-    @elseif  ($saldo == $cliente)
-        <span class="badge text-success"> Caso 2 de algo  </span> 
-    @endif        
+    @if ($saldo_existe == true)
 
 
 
-                        <div class="text-center mb-5">
-                          <h5> <strong> Saldo Atual </strong></h5>
-                              @foreach ($saldo as $clientes_saldo)
+    <div class="text-center mb-5">
+      <h5> <strong> Saldo Atual </strong></h5>
+          @foreach ($saldo as $clientes_saldo)
 
-                              <h1 class="text-success">
-                                <strong>
-                                  {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
-                                </strong>
-                              </h1>
-                                @endforeach                                      
+          <h1 class="text-success">
+            <strong>
+              {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
+            </strong>
+          </h1>
+            @endforeach                                      
 
 <br>
 
 <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
 
- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
-  Adicionar
-  </button> 
+<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#adicionar_valor">
+Adicionar
+</button> 
 
-  <!-- Modal 1 -->
-  <div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.incremento', $cliente->id]]) !!} 
-        <div class="modal-header">
-          <div class="image">
-            <img src="" alt="...">
-        </div>
+<!-- Modal 1 -->
+<div class="modal fade" id="adicionar_valor" tabindex="-1" role="dialog" aria-labelledby="adicionar_valorTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+{!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.incremento', $cliente->id]]) !!} 
+<div class="modal-header">
+<div class="image">
+<img src="" alt="...">
+</div>
 
-        </div>
-        <div class="modal-body">
+</div>
+<div class="modal-body">
 
-          <div class="row">
-            <div class="col-md-5 pr-1">
-              <div class="form-group">
-                <svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
+<div class="row">
+<div class="col-md-5 pr-1">
+<div class="form-group">
+<svg style="color: rgb(14, 208, 11);" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" fill="#0ed00b"></path> </svg>
 
-                <label class="text-success"> <strong> Adicionar Valor </strong></label>
-                <div class="input-group">
-                    <span class="input-group-text text-success" id="basic-addon1">
-                      <i class="now-ui-icons business_money-coins"> R$ </i> 
-                    </span>
+<label class="text-success"> <strong> Adicionar Valor </strong></label>
+<div class="input-group">
+<span class="input-group-text text-success" id="basic-addon1">
+  <i class="now-ui-icons business_money-coins"> R$ </i> 
+</span>
 
-                    <input type="text" class="form-control text-success" id="valor_saldo" name="valor_saldo" data-mask="000000" > 
-
-
-                     <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-7 pr-1">
-              <div class="form-group">
-                <label>Descrição</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="now-ui-icons text_align-left"></i>
-                    </span> 
-                    {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
-                  </div>
-                </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-success"> <i class="now-ui-icons ui-1_simple-add"> 
-          </i>  Adicionar valor</button>
-          {!! Form::close() !!}
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 2 -->
-  <button type="button" class="btn btn-secondary btn-sm btn-danger" data-toggle="modal" data-target="#subtrair_valor">
-      Subtrair
-    </button>
-    <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" fill="red"></path> </svg>
-    <div class="modal fade" id="subtrair_valor" tabindex="-1" role="dialog" aria-labelledby="subtrair_valorTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            {!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.decremento', $cliente->id]]) !!} 
-            <div class="modal-header">
-              <div class="image">
-                <img src="" alt="...">
-            </div>
-    
-            </div>
-            <div class="modal-body">
-    
-           <div class="row">
-            <div class="col-md-5 pr-1">
-              <div class="form-group">
-                <label class="text-danger"> <strong> Subtrair valor </strong></label>
-                <div class="input-group">
-                    <span class="input-group-text text-danger" id="basic-addon1">
-                      <i class="now-ui-icons business_money-coins"> R$ </i> 
-                    </span>
-
-                    <input type="text" class="form-control text-danger" id="valor_saldo" name="valor_saldo" data-mask="000000"  > 
+<input type="text" class="form-control text-success" id="valor_saldo" name="valor_saldo" data-mask="000000" > 
 
 
-                     <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-7 pr-1">
-              <div class="form-group">
-                <label>Descrição</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="now-ui-icons text_align-left"></i>
-                    </span> 
-                    {!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
-                  </div>
-                </div>
-            </div>
-          </div>
+ <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
+</div>
+</div>
+</div>
+<div class="col-md-7 pr-1">
+<div class="form-group">
+<label>Descrição</label>
+<div class="input-group">
+<span class="input-group-text" id="basic-addon1">
+  <i class="now-ui-icons text_align-left"></i>
+</span> 
+{!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
+</div>
+</div>
+</div>
+</div>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-danger"> <i class="now-ui-icons ui-1_simple-delete">  Subtrair valor </i> </button>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+<button type="submit" class="btn btn-success"> <i class="now-ui-icons ui-1_simple-add"> 
+</i>  Adicionar valor</button>
+{!! Form::close() !!}
 
-          {!! Form::close() !!}
+</div>
+</div>
+</div>
+</div>
 
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- Modal 2 -->
+<button type="button" class="btn btn-secondary btn-sm btn-danger" data-toggle="modal" data-target="#subtrair_valor">
+Subtrair
+</button>
+<svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" fill="red"></path> </svg>
+<div class="modal fade" id="subtrair_valor" tabindex="-1" role="dialog" aria-labelledby="subtrair_valorTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+{!! Form::model($saldo, ['method' => 'PATCH','route' => ['saldo.decremento', $cliente->id]]) !!} 
+<div class="modal-header">
+<div class="image">
+<img src="" alt="...">
+</div>
 
+</div>
+<div class="modal-body">
+
+<div class="row">
+<div class="col-md-5 pr-1">
+<div class="form-group">
+<label class="text-danger"> <strong> Subtrair valor </strong></label>
+<div class="input-group">
+<span class="input-group-text text-danger" id="basic-addon1">
+  <i class="now-ui-icons business_money-coins"> R$ </i> 
+</span>
+
+<input type="text" class="form-control text-danger" id="valor_saldo" name="valor_saldo" data-mask="000000"  > 
+
+
+ <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
+</div>
+</div>
+</div>
+<div class="col-md-7 pr-1">
+<div class="form-group">
+<label>Descrição</label>
+<div class="input-group">
+<span class="input-group-text" id="basic-addon1">
+  <i class="now-ui-icons text_align-left"></i>
+</span> 
+{!! Form::text('Observacoes', null, array('class' => 'form-control')) !!}
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
+<button type="submit" class="btn btn-danger"> <i class="now-ui-icons ui-1_simple-delete">  Subtrair valor </i> </button>
+
+{!! Form::close() !!}
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</form>     
   
-              
-    </form>     
-                      
-    </div>
+</div>
+
+        
+
+    @elseif  ($saldo_existe == false)
+    {!! Form::open(['route' => 'saldo.add', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+
+
+    <input type="hidden" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$cliente->id}}" > 
+
+    <div class="text-center mb-5">
+      <h5> <strong> Saldo Atual </strong></h5>
+
+          <h1 class="text-success">
+            <strong>
+              <button type="submit" class="btn btn-lg btn-success"> <i class="now-ui-icons business_money-coins">  Criar conta </i> </button>
+            </strong>
+          </h1>
+
+      
+<br>           
+</div>
+
+    {!! Form::close() !!}
+    
+
+
+    @endif        
 
 
   </div>
@@ -487,7 +508,7 @@
 
               </tr>
             </thead>
-          @foreach ($historico_conta as $clientes_saldo) 
+          @foreach ($saldo_historico as $clientes_saldo) 
 
           <tbody>
             <tr>
