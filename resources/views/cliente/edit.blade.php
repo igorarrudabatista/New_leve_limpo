@@ -256,8 +256,10 @@
             <div class="card card-usser">
               <div class="card-body">
                 <div class="text-center mb-5">
-            <br>
-                  <h6> <strong> Histórico da conta </strong></h6>
+                  <br>
+                  <h4> <strong> HISTÓRICO DA CONTA </strong></h4>
+                  <br><br> 
+
                     <h6 class="text-danger">
             <table class="table app-table-hover mb-20 text-left">
               <thead>
@@ -277,15 +279,10 @@
                 
                 <td><p class="text-primary"> {{($clientes_saldo->updated_at)->format('d/m/Y')}} </td>
 
-                  <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
-
-<?php $valor1 = '0' ?>
-<?php $valor2 = '0' ?>
-                  @if ($clientes_saldo > $valor1)
-                <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
-                  @elseif ($clientes_saldo < $valor2)
-                  <td class="cell text-danger text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
-                    @endif       
+                  @if ($clientes_saldo->hist_valor_saldo >= '0')
+                    <td class="cell text-success text-right"> <big> {{"R$ " . number_format($clientes_saldo->hist_valor_saldo, 2, ",", ".")}} </big>
+                  @elseif ($clientes_saldo->hist_valor_saldo <= '0')   
+negativo                    @endif
 
                   <p class="text-primary"> <small> Obs. {{$clientes_saldo->hist_Observacoes}} </small>  </td>
                     @endforeach
@@ -321,11 +318,25 @@
       <h5> <strong> Saldo Atual </strong></h5>
           @foreach ($saldo as $clientes_saldo)
 
+
+          @if ($clientes_saldo->valor_saldo >= '0')
           <h1 class="text-success">
             <strong>
               {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
             </strong>
           </h1>
+
+            @elseif ($clientes_saldo->valor_saldo <= '0')
+
+            <h1 class="text-danger">
+              <strong>
+                {{"R$ " . number_format($clientes_saldo->valor_saldo, 2, ",", ".")  }}
+              </strong>
+            </h1>
+
+            @endif
+
+
             @endforeach                                      
 
 <br>

@@ -127,7 +127,7 @@ class Empresa_ClienteController extends Controller
      {
         $titulo =  $cliente->Nome_fantasia;
        // $titulo = 'Cliente';
-        $saldo_historico = Hist_Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->orderBy('hist_valor_saldo', 'DESC')->get();
+        $saldo_historico = Hist_Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->orderBy('hist_valor_saldo', 'ASC')->get();
         $saldo = Saldo::with('empresa_cliente')->where('empresa_cliente_id', '=',  $cliente->id)->get();
         $saldo_existe = Saldo::where('empresa_cliente_id', $cliente->id)->exists();
 
