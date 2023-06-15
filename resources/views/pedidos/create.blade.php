@@ -18,7 +18,7 @@
                   <div class="col-auto">
                     <br>
                         <h1 class="app-page-title mb-0">PEDIDOS </h1> 
-                        <p> <big> x </big> Pedidos em aberto</p> 
+                        <p> <big> 1 </big> Pedidos em aberto</p> 
                   </div>
           
 
@@ -70,19 +70,19 @@
 
     @foreach($produtos as $Produto )
 
-    <div class="card-wrapper main-card">
+    <div class="card-wrapper main-card ">
         <div class="card-image-wrapper">
         <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
       </div>
       <div class="card-info">
         <div class='img-container'>
-      </div>
+        </div>
           <div class="card-text big cardText-js">
              <h3> {{$Produto->Nome_Produto ?? 'Não encontrado' }}</h3>
           </div>
-
-          <div class="card-text small">
-            <span  class="card-price">{{$Produto->Preco_Produto ?? 'Não encontrado' }}</span>
+          <div class="card-text small">    
+             <span class="card-price"> {{number_format($Produto->Preco_Produto, 2, ",", ".")  }}</span>
+              {{-- Cuidado com o espaço nesta linha. É preciso estar desta forma --}}
           </div>
           
         </div>
@@ -141,9 +141,10 @@
         	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
         </div>
         <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartForm'> 
+          <div class = 'col-xs-12' id = 'cartForm'> 
+            {!! Form::open(['route' => 'pedidos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
         	<!-- FORM -->
-        		<form>
         			<div class="form-group">
         				<label for="formName">Nome</label>
     					<input type="text" class="form-control" id="formName" placeholder="Your name" required>
@@ -151,7 +152,8 @@
 
         			<div class="form-group">
         				<label for="formAddress">E-mail</label>
-    					<input type="email" class="form-control" id="formAddress" placeholder="Your address" required>
+    					<input type="text" class="form-control" id="formAddress" placeholder="Endereço" >
+    					<input type="email" class="form-control" id="email" placeholder="E-mail" >
         			</div>
 
         		</form>
@@ -166,148 +168,11 @@
   </div>
 </div>
 
-<!-- Modal -->
-
-{{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Finalizando o seu pedido</h4>
-      </div>
-      <div class="modal-body">
-        <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
-        </div>
-        <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartForm'> 
-        	<!-- FORM -->
-        		<form>
-        			<div class="form-group">
-        				<label for="formName">Nome</label>
-    					<input type="text" class="form-control" id="formName" placeholder="Your name" required>
-        			</div>
-
-        			<div class="form-group">
-        				<label for="formAddress">E-mail</label>
-    					<input type="email" class="form-control" id="formAddress" placeholder="Your address" required>
-        			</div>
-
-        		</form>
-
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer centered">
-        <button type="button" class="btn btn-default" data-dismiss="modal">FEchar</button>
-        <button type="button" class="btn btn-primary" id='submit'>Finalizar pedido</button>
-      </div>
-    </div>
-  </div>
-</div> --}} 
-{{--
- <div id="myModal" class="shadow">
-  <div class="main-modal">
-    <div class="modal-left">
-      <div class="modal-image-wrapper">
-        @foreach($produtos as $Produto)
-        <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
-
-    </div>
-    <div class="modal-info-header">
-      <div class="left-side">
-        <h1 class="modalHeader-js"></h1>
-        <p>{{$Produto->name ?? 'Não encontrado' }}</p>
-      </div>
-      <div class="right-side">
-      <b> Preço: </b>
-        <span class="amount"> {{$Produto->name ?? 'Preço ' }} </span>
-      </div>
-    </div>
-    <div class="info-bar">
-      <div class="info-wrapper">
-        <div class="info-icon">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-        </div>
-        <span>2 Bedrooms</span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-wind"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
-        </div>
-        <span>2 Bathrooms</span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
-        </div>
-        <span>1250 m2</span>
-      </div>
-      <div class="info-wrapper">
-        <div class="info-icon">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <span>Highly Secured</span>
-      </div>
-    </div>
-    <div class="desc-wrapper">
-      <div class="modal-info-header">
-        <h1>Descrição</h1>
-        <p>
-          {{$Produto->Descricao ?? 'Não encontrado' }}
-        </p>
-      </div>
-      
-      
-      <div class="desc-actions">
-        <button class="btn-book">Botão</button>
-        <div class="add-favourite">
-          <input type="checkbox" id="favourite">
-          <label for="favourite">
-            <span class="favourite-icon">
-              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>  
-            </span>
-            <span>Eu quero!</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-right">
-    <div class="app-main-right-header">
-      <span>Pedidos</span>
-      <a href="#">Ver todos</a>
-    </div>
-    
-    <div class="card-wrapper">
-      <div class="card">
-        <div class="profile-info-wrapper">
-          <div class="profile-img-wrapper">
-            <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
-          </div>
-          <p> </p>
-        </div>
-        <p> </p>
-      </div>
-    </div>
-    
-    
-    
-  </div>
-  
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-</div>    
-@endforeach
-</div> --}}
-
 
         	<!-- FIM MODAL -->
 
       <!-- Latest compiled and minified CSS -->
     
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>      
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>      
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
      
@@ -335,36 +200,37 @@ $('.btn-add-cart').click( (e) => {
       let itemName = eventTarget.parent().parent().find('h3')[0].textContent ;
       let itemPrice = eventTarget.parent().parent().find('span')[1].textContent ;
     //  let itemPic = eventTarget.parent().parent().find('b')[2].textContent ;
-		addToCart(itemName, itemPrice, itemPrice);
+		addToCart(itemName, itemPrice);
 	});
 
 	$('#submit').click( () => {
 		formSubmitted();
 	});
 
-	setRandomPrices();
+//	setRandomPrices();
 }
 
-function setRandomPrices() {
-	// just for fun
-	let items = document.querySelectorAll('.item');
-	for (let item of items) {
-		$(item).find('p')[1].textContent = '$' + (Math.floor(Math.random() * (199 - 0)) + 0) + '.' + (Math.floor(Math.random() * (99 - 10)) + 10);
-	}
-}
 
-function addToCart(name, price, pic) {
+
+// function setRandomPrices() {
+// 	// just for fun
+// 	let items = document.querySelectorAll('.item');
+// 	for (let item of items) {
+// 		$(item).find('p')[1].textContent = '$' + (Math.floor(Math.random() * (199 - 0)) + 0) + '.' + (Math.floor(Math.random() * (99 - 10)) + 10);
+// 	}
+// }
+
+function addToCart(name, price) {
 	let priceNumber = parseFloat(price.slice(1));
-	if (itemsInCart === 0) $('#cart').text("");
+	if (itemsInCart === 0) $('#cart').text(" ");
 	let newDiv = $('<div class="cart-item"></div>');
-	newDiv.append('<div class="card-text big cardText-js">' + name + '</div>' + '<a class="card-text small"> <span class="card-price text-success"> R$'+ price );
+	newDiv.append('<div class="card-text big cardText-js">' + name + '</div>' + '<a class="card-text small"> <span class="card-price text-success"> R$ '+ price + ' ' );
 	newDiv.append(' <button class="badge badge-danger" onclick="deleteItem(this)"><i class="now-ui-icons ui-1_simple-remove"></i></button>');
 	newDiv.append('<hr>');
 	newDiv.attr('name', name);
 	newDiv.attr('price', priceNumber);
-	newDiv.attr('pic', pic);
+	//newDiv.attr('pic', pic);
 	$('#cart').append(newDiv);
-	newDiv;
 	itemsInCart++;
 	$('#cartItems').text(itemsInCart);
 	subTotal += priceNumber;
@@ -391,11 +257,11 @@ function updatePrice() {
 	$('#prices').empty();
 	if (itemsInCart === 0) return;
 	let newDiv = $('<div></div>');
-	newDiv.append('<strong >Subtotal: <strong class="text-success"> R$  ' + subTotal.toFixed(2) + '<br>');
-	newDiv.append('<strong>Taxa: <strong class="text-success">' + tax * 100 + '%<br>');
-	newDiv.append('<i class="now-ui-icons business_money-coins"></i> <strong> Total a pagar: <strong class="text-danger"> R$ ' + (subTotal + (subTotal * tax)).toFixed(2) + '</strong>');
-
-	newDiv.append('<button class="btn btn-info btn-block" onclick="openModal()">Finalizar Compra</button>');
+	newDiv.append('<strong>Subtotal: R$ ' + subTotal.toFixed(2) + '<br>');
+  newDiv.append('<strong>Tax: ' + tax * 100 + '%<br>');
+  newDiv.append('<strong>Total Price: $' + (subTotal + (subTotal * tax)).toFixed(2) + '</strong>');
+	
+  newDiv.append('<button class="btn btn-info btn-block" onclick="openModal()">Finalizar Compra</button>');
 
 	$('#prices').append(newDiv);
 	newDiv;
@@ -408,7 +274,7 @@ function cartToString() {
 	for (let item of cartItems) {
 		itemsString = itemsString + item.getAttribute('name') + " .. $" + item.getAttribute('price') + "<br>";
 		};
-	itemsString += '</p><p>Subtotal: R$' + subTotal.toFixed(2) + '<br>';
+  itemsString += '</p><p>Subtotal: $ ' + subTotal.toFixed(2) + '<br>';
 	itemsString += 'Taxa: ' + tax * 100 + '%<br>'
 	itemsString += 'Total a pagar: <mark><strong>R$' + (subTotal + (subTotal * tax)).toFixed(2) + '</strong></mark></p></small>';
 	return itemsString;
@@ -443,7 +309,7 @@ function checkEmptyFields() {
 
 	if ( !$.trim( $('#formAddress').val() ).length) { 
 		$('#formAddress');
-		somethingEmpty = true;
+		somethingEmpty = false;
 	}
 
 	return somethingEmpty;
