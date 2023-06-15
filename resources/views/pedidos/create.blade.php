@@ -105,21 +105,15 @@
         <div class="cart" id = 'cart'>
           Você não possui itens no Carrinho.
       </div>
-        <div class="card-text big cardText-js">Nome do produto</div>
-        <div class="card-text small">
-          <span  class="card-price">R$ 1.000</span>
-        </div>
+    
   
       </div>
       </div>
        
       <div class="card-info">
-
-          <div id = 'prices'>
-          </div>
-
-	   
-	  </div>
+        <div id = 'prices'>
+        </div>
+    </div>
 
 
 
@@ -127,8 +121,92 @@
   </div>
 </section>
 </div>
+<!-- Button to Open the Modal -->
 
-{{-- <div id="modal-window" class="shadow">
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class = 'row'>
+        	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
+        </div>
+        <div class = 'row'>
+        	<div class = 'col-xs-12' id = 'cartForm'> 
+        	<!-- FORM -->
+        		<form>
+        			<div class="form-group">
+        				<label for="formName">Nome</label>
+    					<input type="text" class="form-control" id="formName" placeholder="Your name" required>
+        			</div>
+
+        			<div class="form-group">
+        				<label for="formAddress">E-mail</label>
+    					<input type="email" class="form-control" id="formAddress" placeholder="Your address" required>
+        			</div>
+
+        		</form>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id='submit'>Finalizar pedido</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+{{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Finalizando o seu pedido</h4>
+      </div>
+      <div class="modal-body">
+        <div class = 'row'>
+        	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
+        </div>
+        <div class = 'row'>
+        	<div class = 'col-xs-12' id = 'cartForm'> 
+        	<!-- FORM -->
+        		<form>
+        			<div class="form-group">
+        				<label for="formName">Nome</label>
+    					<input type="text" class="form-control" id="formName" placeholder="Your name" required>
+        			</div>
+
+        			<div class="form-group">
+        				<label for="formAddress">E-mail</label>
+    					<input type="email" class="form-control" id="formAddress" placeholder="Your address" required>
+        			</div>
+
+        		</form>
+
+        	</div>
+        </div>
+      </div>
+      <div class="modal-footer centered">
+        <button type="button" class="btn btn-default" data-dismiss="modal">FEchar</button>
+        <button type="button" class="btn btn-primary" id='submit'>Finalizar pedido</button>
+      </div>
+    </div>
+  </div>
+</div> --}} 
+{{--
+ <div id="myModal" class="shadow">
   <div class="main-modal">
     <div class="modal-left">
       <div class="modal-image-wrapper">
@@ -224,56 +302,14 @@
 @endforeach
 </div> --}}
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Finalizando o seu pedido</h4>
-      </div>
-      <div class="modal-body">
-        <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
-        </div>
-        <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartForm'> 
-        	<!-- FORM -->
-        		<form>
-        			<div class="form-group">
-        				<label for="formName">Nome</label>
-    					<input type="text" class="form-control" id="formName" placeholder="Your name" required>
-        			</div>
 
-        			<div class="form-group">
-        				<label for="formAddress">E-mail</label>
-    					<input type="email" class="form-control" id="formAddress" placeholder="Your address" required>
-        			</div>
-
-        		</form>
-
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer centered">
-        <button type="button" class="btn btn-default" data-dismiss="modal">FEchar</button>
-        <button type="button" class="btn btn-primary" id='submit'>Finalizar pedido</button>
-      </div>
-    </div>
-  </div>
-</div>
         	<!-- FIM MODAL -->
 
       <!-- Latest compiled and minified CSS -->
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-         
-       <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-         
-         
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-         
-       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>      
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
      
 
 <script>
@@ -367,14 +403,14 @@ function updatePrice() {
 
 
 function cartToString() {
-	let itemsString = "<small><p><strong>Your order:</strong><br>";
+	let itemsString = "<small><p><strong>Seu pedido:</strong><br>";
 	let cartItems = document.querySelectorAll('.cart-item');
 	for (let item of cartItems) {
 		itemsString = itemsString + item.getAttribute('name') + " .. $" + item.getAttribute('price') + "<br>";
 		};
-	itemsString += '</p><p>Subtotal: $' + subTotal.toFixed(2) + '<br>';
-	itemsString += 'Tax: ' + tax * 100 + '%<br>'
-	itemsString += 'Total price with tax: <mark><strong>$' + (subTotal + (subTotal * tax)).toFixed(2) + '</strong></mark></p></small>';
+	itemsString += '</p><p>Subtotal: R$' + subTotal.toFixed(2) + '<br>';
+	itemsString += 'Taxa: ' + tax * 100 + '%<br>'
+	itemsString += 'Total a pagar: <mark><strong>R$' + (subTotal + (subTotal * tax)).toFixed(2) + '</strong></mark></p></small>';
 	return itemsString;
 }
 
@@ -401,12 +437,12 @@ function checkEmptyFields() {
 	let somethingEmpty = false;
   
 	if ( !$.trim( $('#formName').val() ).length) { 
-		$('#formName').animateCss('animated jello');
+		$('#formName');
 		somethingEmpty = true;
 	}
 
 	if ( !$.trim( $('#formAddress').val() ).length) { 
-		$('#formAddress').animateCss('animated jello');
+		$('#formAddress');
 		somethingEmpty = true;
 	}
 
@@ -424,10 +460,6 @@ $.fn.extend({
     }
 });
 </script>
-
-
-<!-- partial -->
-  <script  src="./script.js"></script>
 
  
 @endsection
