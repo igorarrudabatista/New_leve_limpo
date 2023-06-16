@@ -70,13 +70,13 @@
 
     @foreach($produtos as $Produto )
 
-    <div class="card-wrapper main-card ">
+    <div class="card-wrapper main-card">
         <div class="card-image-wrapper">
         <img src="{{asset('/images/produtos/')}}/{{$Produto->image}}" alt="Hotel">
       </div>
       <div class="card-info">
         <div class='img-container'>
-        </div>
+      </div>
           <div class="card-text big cardText-js">
              <h3> {{$Produto->Nome_Produto ?? 'Não encontrado' }}</h3>
           </div>
@@ -131,17 +131,14 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class = 'col-xs-12' id = 'cartContentsModal'> </div>
+
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
+
         <div class = 'row'>
-        	<div class = 'col-xs-12' id = 'cartContentsModal'> </div>
-        </div>
-        <div class = 'row'>
-          <div class = 'col-xs-12' id = 'cartForm'> 
             {!! Form::open(['route' => 'pedidos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
         	<!-- FORM -->
@@ -209,7 +206,6 @@ $('.btn-add-cart').click( (e) => {
 
 //	setRandomPrices();
 }
-
 
 
 // function setRandomPrices() {

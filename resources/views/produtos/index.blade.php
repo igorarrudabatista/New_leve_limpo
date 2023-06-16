@@ -134,14 +134,14 @@
     @foreach($produto as $produtos)
 
     <tbody>
-    <tr><td>
-      <div class="img-container">
-        <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" alt="...">
-      </div>
-    </td>
-
-    <td class="td-name">
-      <a href="{{ route('produtos.edit',$produtos->id) }}">{{$produtos->Nome_Produto}} </a>
+    <tr>
+      <td>
+        <div class="img-container">
+          <img src="{{asset('/images/produtos/')}}/{{$produtos->image}}" alt="...">
+        </div>
+      </td>
+      <td class="td-name">
+        <a href="{{ route('produtos.edit',$produtos->id) }}">{{$produtos->Nome_Produto}}</a>
     <br>
       <small>{{"Categoria: " .$produtos->Categoria_Produto ?? 'Categoria não informada'}} 
     <br>

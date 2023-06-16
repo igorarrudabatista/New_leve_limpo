@@ -44,7 +44,7 @@ class Empresa_ClienteController extends Controller
         $clienteqtd  = Empresa_Cliente::count();
         $saldo = Saldo::with('empresa_cliente')->get();  
         $titulo = 'Clientes';
-        $cliente = Empresa_Cliente::all();
+        $cliente = Empresa_Cliente::get();
 //dd($saldo);
         $search = request('search');
 
@@ -77,6 +77,7 @@ class Empresa_ClienteController extends Controller
 
     $search = request('search');
     $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
+    $saldo = Saldo::with('empresa_cliente')->get();
 
     $result = '';
 
@@ -90,6 +91,7 @@ class Empresa_ClienteController extends Controller
                                    'clientes' =>$clientes,
                                    'result' =>$result,
                                    'titulo' =>$titulo,
+                                   'saldo' =>$saldo
                                   ]);
 
    }
