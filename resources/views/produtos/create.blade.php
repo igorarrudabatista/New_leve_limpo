@@ -74,7 +74,7 @@
               
               <div class="col-md-2 pl-1">
                 <div class="form-group">
-                  <label>Status do Produto</label>
+                  <label>Disponível no Site?</label>
 
                   
                   <select id="Status_Produto" name="Status_Produto"

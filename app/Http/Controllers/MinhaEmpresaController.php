@@ -28,7 +28,11 @@ class MinhaEmpresaController extends Controller
     {
         $titulo = 'Minha Empresa';
 
-        $empresa = Minhaempresa::where('Cnpj', '==', 'NULL');
+        $empresa = Minhaempresa::where('id', '>=', 0)->exists();
+
+     //   $saldo_existe = Saldo::where('empresa_cliente_id', $cliente->id)->exists();
+
+      // dd($empresa);
         $minhaempresa = MinhaEmpresa::get();
         return view('minhaempresa.index',compact('minhaempresa','empresa', 'titulo'));
         
@@ -41,7 +45,9 @@ class MinhaEmpresaController extends Controller
      */
     public function create()
     {
-        return view('minhaempresa.create');
+        $titulo = 'Minha Empresa';
+
+        return view('minhaempresa.create',compact('titulo'));
     }
 
 

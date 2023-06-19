@@ -84,7 +84,7 @@
     </div> 
 
     <div class="col-md-3 mb-4">
-      <label for="Status_Produto"> <strong> Status do Produto  </strong></label>
+      <label for="Status_Produto"> <strong> Disponível no Site?  </strong></label>
       <select  id="Status_Produto" name="Status_Produto" class="form-control">
       <option value=""> Selecione  </option>  
       <option value="0"> Desativado </option>

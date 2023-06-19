@@ -40,6 +40,7 @@
 
                     
                     </div>
+  
 
                     {{-- @if ($empresa == null && $empresa == empty($empresa)) --}}
         
@@ -55,8 +56,14 @@
 
                     <div class="card-body">
                       
+                      @if ($empresa == false)
+                      <a class="btn btn-warning" href="minhaempresa/create">Configurar minha empresa</a>
+  
+                      
+                      @endif
+  
+                      
                       {{-- @if ($empresa == 'Null')
-                      <a class="btn btn-warning" href=" ">Criar</a>
                    @elseif  ($empresa !== 'Null')
                    <a class="btn btn-warning" href=" ">Editar</a>
                    @endif
